@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../css/signup.css">
+    <link rel="stylesheet" href="../Public/css/signup.css">
     <title>Signup</title>
 </head>
 <body>
-    <h1 class="heading">Join with us shape you future</h1>
+    <h1 class="heading">Join with us and shape you future</h1>
     <form action="" method="post">
         <div class="signup-container">
             <div class="signup-img">
-                <img src="../assets/images/signup.png" alt="signup">
+                <img src="../Public/assets/images/signup.png" alt="signup">
             </div>
             <div class="form-container">
                 <h1 class="login-text">SignUp</h1>
@@ -24,9 +24,9 @@
                 <label for="l-name">E-mail:</label>
                 <input type="email" name="e-mail" id="e-mail" class="input-box">
                 <div class="sub-container-1">
-                    <label for="l-name">Gender:</label>
-                    <label for="l-name">Male</label><input type="checkbox" name="gender" id="male" class="gender-chkbox">
-                    <label for="l-name">Female</label><input type="checkbox" name="gender" id="female" class="gender-chkbox">
+                    <label for="">Gender:</label>
+                    <label for="gender[]">Male</label><input type="checkbox" name="gender[]" id="male" class="gender-chkbox">
+                    <label for="gender[]">Female</label><input type="checkbox" name="gender[]" id="female" class="gender-chkbox">
                 </div>
                 <label for="create-pwd">Create Password:</label>
                 <input type="password" name="create-pwd" id="create-pwd" class="input-box">
