@@ -9,7 +9,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="../Modules/Auth.php" method="post">
         <div class="container">
             <h1 class="login-text">Login</h1>
             <div class="sub-container-1">
@@ -30,7 +30,7 @@
                 <input type="checkbox" name="show-pwd" id="show-pwd" class="ch-2">
                 <label for="show-pwd">Show Password</label>
             </div>
-            <input type="submit" value="Log In" class="login-btn">
+            <input type="submit" value="Log In" class="login-btn" name="login">
             <div class="sub-container-3">
                 <p>Not a member? <a href="signup.php">Sign Up</a></p>
             </div>

@@ -9,8 +9,8 @@
     <title>Signup</title>
 </head>
 <body>
-    <h1 class="heading">Join with us and shape you future</h1>
-    <form action="" method="post">
+    <h1 class="heading">Join with us and shape your future</h1>
+    <form action="../Modules/Registration.php" method="post">
         <div class="signup-container">
             <div class="signup-img">
                 <img src="../Public/assets/images/signup.png" alt="signup">
@@ -28,17 +28,18 @@
                     <label for="gender[]">Male</label><input type="checkbox" name="gender[]" id="male" class="gender-chkbox">
                     <label for="gender[]">Female</label><input type="checkbox" name="gender[]" id="female" class="gender-chkbox">
                 </div>
-                <label for="create-pwd">Create Password:</label>
-                <input type="password" name="create-pwd" id="create-pwd" class="input-box">
-                <label for="confirm-pwd">Confirm Password:</label>
-                <input type="password" name="confirm-pwd" id="confirm-pwd" class="input-box">
-                <input type="submit" value="Sign Up" class="login-btn">
+                <label for="phone">Phone no:</label>
+                <input type="text" name="phone" id="phone" class="input-box">
+                <label for="create-pwd">Password:</label>
+                <input type="password" name="password" id="password" class="input-box">
+                <input type="submit" value="Sign Up" class="login-btn" name="signup">
                 <div class="sub-container-3">
                     <p>Already a member? <a href="login.php">Log In</a></p>
                 </div>
             </div>
         </div>
     </form>
+    <h2 class="warning">All fields are required!</h2>
     <script>
         
     </script>
