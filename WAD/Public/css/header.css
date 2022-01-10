@@ -12,6 +12,10 @@ body {
   padding: 0;
 }
 
+.logo-container .logo{
+    width: 130px;
+}
+
 nav {
   height: 70px;
   background-color: rgb(31, 141, 251, 0.97);
