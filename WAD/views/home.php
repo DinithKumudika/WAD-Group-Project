@@ -13,14 +13,35 @@
 </head>
 
 <body>
-
   <?php
   include '../views/header.php';
   ?>
 
+  <h1 class="heading" id=head>FIND WHAT YOU DESERVE</h1>
+  <h2 class="sub-heading">Create an account </h2>
 
-  <?php 
-  include('./footer.php'); 
+  <div class="container">
+      <div class="container-1" id="con-1">
+      <form action="../Modules/Auth.php" method="post">
+        <h1 class="reg-title">Company Registration</h1>
+        <p>Searching for best employes for your company? Register today to find best skills for you</P>
+        <input type="button" class="btn" value="Register">
+    </form>
+  </div>
+
+  <div>
+    <form action="../Modules/Auth.php" method="post">
+      <div class="container-2" id="con-2">
+        <h1 class="reg-title">Candidate Registration</h1>
+        <p>Looking for the job that suits you most? Register and start searching!</p>
+        <input type="button" class="btn" value="Register">
+      </div>
+    </form>
+  </div>
+  </div>
+
+  <?php
+  include('./footer.php');
   ?>
   <script src="../public/js/header.js"></script>
 </body>
