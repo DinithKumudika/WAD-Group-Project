@@ -1,0 +1,15 @@
+footer{
+     position: absolute;
+     bottom: 0;
+     display: flex;
+     justify-content: center;
+     margin: auto;
+     padding: 5px 0px 5px 0px;
+     width: 100%;
+}
+
+footer p{
+     font-family: 'Open Sans', sans-serif;
+     font-weight: bold;
+     text-align: center;
+}

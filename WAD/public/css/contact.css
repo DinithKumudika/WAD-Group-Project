@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=McLaren&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Roboto+Condensed:wght@700&family=Roboto:wght@100;400&family=Yanone+Kaffeesatz:wght@300;400;500;600&family=Zen+Kurenaido&display=swap');
+
+body{
+    background-size:100%;
+    background-repeat: no-repeat;
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+.title{
+     font-family: 'Open Sans', sans-serif;
+     font-size: 35px;
+     margin: 40px auto 0px auto;
+     padding-top: 20px;
+     color: rgb(255, 255, 255);
+     text-align: center;
+}
+
+.title-container{
+     margin-top: -40px;
+     background-image: url('../assets/images/contactus3.jpg');
+     background-repeat: no-repeat;
+     background-size: 100% 120%;
+     height: 250px;
+}
+
+form{
+     margin-top: 20px;
+     margin-left: 20px;
+     margin-bottom: 20px;
+     background-color: rgb(31, 141, 251);
+     padding: 20px 10px 20px 20px;
+     width: 30%;
+     border-radius: 10px;
+}
+
+form div{
+     display: block;
+}
+
+label{
+     font-family: 'Open Sans', sans-serif;
+     font-weight: bold;
+}
+
+.input-box{
+     font-family: 'Open Sans', sans-serif;
+     height: 30px;
+     padding: 0px 0px 0px 10px;
+     outline: 1px solid black;
+     border: 2px solid transparent;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     width: 300px;
+}
+
+.input-box:focus{
+     border: 2px solid black;
+     outline: none;
+     transform: scale(1.05);
+}
+
+.message{
+     padding: 10px 0px 0px 10px;
+     outline: 1px solid black;
+     border: 2px solid transparent;
+     margin-top: 10px;
+     margin-bottom: 10px;
+}
+
+.message:focus{
+     border: 2px solid black;
+     outline: none;
+     transform: scale(1.05);
+}
+
+.btn{
+     height: 40px;
+     width: 150px;
+     border: 0px;
+     color: white;
+     border-radius: 10px;
+     font-size: 15px;
+     font-weight: bold;
+     font-family: 'Open Sans', sans-serif;
+}
+
+.btn:hover{
+     cursor: pointer;
+}
+
+.btn:first-child:hover{
+     background-color: rgb(22, 122, 55);
+}
+
+.btn:last-child:hover{
+     background-color: rgb(163, 24, 24);
+}
+
+.btn:first-child{
+     background-color: rgb(21, 146, 63);
+}
+
+.btn:last-child{
+     background-color: rgb(202, 34, 34);
+}

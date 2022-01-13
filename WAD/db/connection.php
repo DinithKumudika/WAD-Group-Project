@@ -1,12 +1,12 @@
 <?php
-  $server = "localhost";
-  $username = "root";
-  $password = "";
-  $database = "";
+  $host = "localhost";
+  $dbUsername = "root";
+  $dbPassword = "";
+  $dbName = "hire_me";
 
-  $conn = new mysqli($server,$username,$password,$database);
+  $conn = mysqli_connect($host,$dbName,$dbPassword,$dbName);
 
   if(!$conn){
-      die(mysqli_connect_error());
+      die('Connection Error,'.mysqli_connect_error());
   }
 ?>
