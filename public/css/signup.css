@@ -1,0 +1,137 @@
+/*font imports*/
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=McLaren&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Roboto+Condensed:wght@700&family=Roboto:wght@100;400&family=Yanone+Kaffeesatz:wght@300;400;500;600&family=Zen+Kurenaido&display=swap');
+
+body{
+    background-image: url('../assets/images/bg2.jpg');
+    background-size:100%;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0px 20px 0px 20px;
+}
+
+.heading{
+    color: rgb(255, 255, 255);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family:cursive;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.login-text{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-container{
+    position: relative;
+    display: flex;
+    max-width: 850px;
+    flex-direction: row;
+    margin: auto;
+    top: 10px;
+    height: 600px;
+    z-index: -1;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    width:500px;
+    background-color: rgb(27, 98, 179,0.6);
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    height: 600px;
+    padding: 20px 10px 30px 10px;
+}
+
+.signup-img img{
+    height: 625px;
+    max-width: 360px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    image-rendering:optimizeQuality;
+}
+
+.input-box{
+    border: 4px solid transparent;
+    margin: 5px auto 5px auto;
+    width: 70%;
+    height: 25px;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+
+label{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: white;
+    margin-left: 13%;
+    margin-bottom: 5px;
+}
+
+.sub-container-1{
+    margin: 15px auto 10px 16%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.sub-container-1 .gender-chkbox{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+
+.input-box:focus{
+    border: 4px solid rgb(51, 125, 195,0.5);
+    outline: none;
+}
+
+.login-btn{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    border: 2px solid white;
+    border-radius: 15px;
+    width: 53%;
+    height: 70px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px 0px 5px 0px;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.login-btn:hover{
+    transform: scale(1.05);
+    background-color: white;
+    color: rgb(27, 98, 179);
+    cursor: pointer;
+}
+
+.sub-container-3{
+    margin: 10px auto 0px auto;
+}
+
+.sub-container-3 p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+}
+
+.sub-container-3 p a{
+    text-decoration: none;
+    color: white;
+}
+
+.red{
+    color: rgb(216, 29, 29);
+}

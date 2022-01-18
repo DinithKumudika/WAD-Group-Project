@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Roboto+Condensed:wght@700&family=Roboto:wght@100;400&family=Zen+Kurenaido&display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.logo-container .logo{
+    width: 130px;
+}
+
+nav {
+  height: 70px;
+  background-color: rgb(31, 141, 251);
+  position: fixed;
+  width: 100%;
+  top: 0%;
+  z-index: 5;
+}
+
+nav h1 {
+  font-size: 50px;
+  margin-left: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  float: right;
+  margin-right: 25px;
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-end;
+  margin-top: -45px;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+nav ul li a {
+  list-style: none;
+  text-decoration: none;
+  color: rgb(66, 66, 66);
+  font-size: 20px;
+  padding: 20px 0;
+  font-weight: bold;
+  position: relative;
+  text-transform: uppercase;
+}
+
+nav ul li a:hover {
+  color: black;
+}
+
+nav ul li a:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 100%;
+  background: black;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s linear;
+}
+
+nav ul li a:hover:before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.menu-btn, .close-btn {
+  color: rgb(66, 66, 66);
+  font-size: 40px;
+  font-weight: bold;
+  float: right;
+  line-height: 75px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+
+
+@media screen and (max-width: 1300px) {
+  body {
+    background-size: auto;
+  }
+}
+
+@media screen and (max-width: 944px) {
+  nav ul li a {
+    font-size: 17px;
+    padding: 24px 0;
+  }
+}
+
+@media screen and (max-width: 860px) {
+
+.menu-btn{
+    display: block;
+}
+
+.close-btn{
+    display: none;
+}
+
+ .icon:hover {
+    color: black;
+  }
+
+  nav ul {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(70, 153, 236);
+    top: 115px;
+    left: -100%;
+    text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 50px;
+    transition: all 0.5s;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 35px 0;
+  }
+
+  nav ul li a {
+    font-size: 25px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
+  }
+
+  nav ul li a::before {
+    transform: none;
+    display: none;
+  }
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.nav-display {
+  left: 0%;
+}
