@@ -1,4 +1,5 @@
 <?php
+ 
   $errors = [
     'fname'=>'',
     'lname'=>'',
@@ -8,70 +9,78 @@
     'password'=>'',
   ];
 
-  // include ('../db/connection.php');
+  $mail_notification = [
+    'successfull'=>'',
+    'failed'=>''
+  ];
+
+  include './db/db_connect.php';
 
   if (isset($_POST['signup'])) {
-    $firstName = htmlspecialchars($_POST['f-name']);
-    $lastName = htmlspecialchars($_POST['l-name']);
-    $email = htmlspecialchars($_POST['e-mail']);
-    $gender = htmlspecialchars($_POST['gender']);
-    $phoneNo = htmlspecialchars($_POST['phone']);
-    $password = htmlspecialchars($_POST['password']);
+    $firstName = mysqli_real_escape_string($conn,htmlspecialchars($_POST['f-name']));
+    $lastName = mysqli_real_escape_string($conn,htmlspecialchars($_POST['l-name']));
+    $email = mysqli_real_escape_string($conn,htmlspecialchars($_POST['e-mail'])) ;
+    $gender = mysqli_real_escape_string($conn,htmlspecialchars($_POST['gender']));
+    $phoneNo = mysqli_real_escape_string($conn,htmlspecialchars($_POST['phone']));
+    $password = mysqli_real_escape_string($conn,htmlspecialchars($_POST['password']));
     $encrypted_password = sha1($password);
     $fullName = $firstName . ' ' . $lastName;
 
-    $verificationCode = sha1($email . time());
-    $verificationURL = 'http://localhost/WAD/models/verification.php?code=' . $verificationCode;
-
-    $to = $email;
-    $sender = 'hiremelkofficial@gmail.com';
-    $subject = 'Verify your account on hire me!';
-    $body = '<h3>Dear ' . $fullName . ',</h3>
-      <br>
-      <p>Thank you for joining with us. Please click the below link to verify your email address to activate the account</p>
-      <br>
-      <p>' . $verificationURL . '</p>
-      <p>Thank you,
-      <br>
-      HireMe.lk
-      </p>
-    ';
-    $header = "From: {$sender}\r\n" .
-              "Content-Type: text/html\r\n";
-
-    $mail_sent = mail($to, $subject,$body, $header);
-    if ($mail_sent) {
-
-    } 
-    else {
+    if(empty($firstname)||empty($lastName)||!filter_var($email, FILTER_VALIDATE_EMAIL)||empty($gender)||empty($phoneNo)||empty($password)){
+      if (empty($firstname)) {
+        $errors['fname'] = "First name is required";
+      }
+  
+      if(empty($lastName)){
+        $errors['lname'] = "Last name is required";
+      }
+  
+      if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $errors['email'] = "Valid email is required";
+      }
+  
+      if(empty($gender)){
+        $errors['gender'] = "Gender is requierd";
+      }
+  
+      if(empty($phoneNo)){
+        $errors['phone'] = "Phone number is required";
+      }
+  
+      if(empty($password)){
+        $errors['password'] = "Password is required";
+      }
     }
+    else{
+      $verificationCode = sha1($email . time());
+      $verificationURL = 'http://localhost/WAD/models/verification.php?verification_code=' . $verificationCode;
 
-    if (empty($firstname)) {
-      $errors['fname'] = "First name is required";
-    }
+      $to = $email;
+      $sender = 'hiremelkofficial@gmail.com';
+      $subject = 'Verify your account on hire me!';
+      $body = '<h3>Dear ' . $fullName . ',</h3>
+        <br>
+        <p>Thank you for joining with us. Please click the below link to verify your email address to activate the account</p>
+        <br>
+        <p>'.$verificationURL.'</p>
+        <p>Thank you,
+        <br>
+        HireMe.lk
+        </p>
+      ';
+      $header = "From: {$sender}\r\n" .
+                "Content-Type: text/html\r\n";
 
-    if(empty($lastName)){
-      $errors['lname'] = "Last name is required";
+      $mail_sent = mail($to, $subject,$body, $header);
+      if ($mail_sent) {
+        $mail_notification['successfull'] = 'Email sent, check your emails';
+      } 
+      else {
+        $mail_notification['failure'] = 'Email cannot be sent';
+      }
     }
-
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-      $errors['email'] = "Valid email is required";
-    }
-
-    if(empty($gender)){
-      $errors['gender'] = "Gender is requierd";
-    }
-
-    if(empty($phoneNo)){
-      $errors['phone'] = "Phone number is required";
-    }
-
-    if(empty($password)){
-      $errors['password'] = "Password is required";
-    }
-    
     if(!array_filter($errors)){
-        header('Location: login.php');
+      header('Location: login.php');
     }
   }
 ?>
@@ -97,30 +106,30 @@
                 <h1 class="login-text">SignUp</h1>
                 <label for="f-name">First Name:</label>
                 <input type="text" name="f-name" id="f-name" class="input-box">
-                <div class="red"><?php echo $errors['fname'];?></div>
+                <div class="red"><?php echo "*".$errors['fname'];?></div>
 
                 <label for="l-name">Last Name:</label>
                 <input type="text" name="l-name" id="l-name" class="input-box">
-                <div class="red"><?php echo $errors['lname'];?></div>
+                <div class="red"><?php echo "*".$errors['lname'];?></div>
 
                 <label for="l-name">E-mail:</label>
                 <input type="email" name="e-mail" id="e-mail" class="input-box">
-                <div class="red"><?php echo $errors['email'];?></div>
+                <div class="red"><?php echo "*".$errors['email'];?></div>
 
                 <div class="sub-container-1">
                     <label for="">Gender:</label>
                     <label for="gender">Male</label><input type="radio" name="gender" id="male" class="gender-radio" value="M">
                     <label for="gender">Female</label><input type="radio" name="gender" id="female" class="gender-radio" value="F">
                 </div>
-                <div class="red"><?php echo $errors['gender'];?></div>
+                <div class="red"><?php echo "*".$errors['gender'];?></div>
 
                 <label for="phone">Phone no:</label>
                 <input type="text" name="phone" id="phone" class="input-box">
-                <div class="red"><?php echo $errors['phone'];?></div>
+                <div class="red"><?php echo "*".$errors['phone'];?></div>
 
                 <label for="create-pwd">Password:</label>
                 <input type="password" name="password" id="password" class="input-box">
-                <div class="red"><?php echo $errors['password'];?></div>
+                <div class="red"><?php echo "*".+$errors['password'];?></div>
 
                 <input type="submit" value="Sign Up" class="login-btn" name="signup">
                 <div class="sub-container-3">

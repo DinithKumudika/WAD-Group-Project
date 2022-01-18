@@ -3,6 +3,7 @@ const closeBtn = document.getElementById("close-ico");
 const navBar = document.getElementById("nav-list");
 const viewportWidth = window.innerWidth;
 const width = 860;
+const navbar = document.getElementById("navbar");
 
 menuBtn.addEventListener('click', function () {
     menuBtn.style.display="none";
@@ -15,3 +16,5 @@ closeBtn.addEventListener('click', function () {
     navBar.classList.remove("nav-display");
     menuBtn.style.display="block";
 });
+
+

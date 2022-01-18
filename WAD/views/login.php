@@ -1,24 +1,32 @@
 <?php
-$errors = [
-    'username' => '',
-    'password' => ''
-];
+// include './db/db_connect.php';
 
-if (isset($_POST['login'])) {
-    $username = htmlspecialchars($_POST['username']);
-    $password = htmlspecialchars($_POST['pwd']);
+// $errors = [
+//     'username' => '',
+//     'password' => ''
+// ];
 
-    if (empty($username)) {
-        $errors['username'] = "username is required";
-    }
-    if (empty($password)) {
-        $errors['password'] = "password is required";
-    }
-}
+// if (isset($_POST['login'])) {
+//     $username = htmlspecialchars($_POST['username']);
+//     $password = htmlspecialchars($_POST['pwd']);
 
-if (!array_filter($errors)) {
-    header('Location: home.php');
-}
+//     if(empty($username)||empty($password)){
+//         if (empty($username)) {
+//             $errors['username'] = "username is required";
+//         }
+//         else{
+//             $errors['password'] = "password is required";
+//         }
+//     }
+//     else{ 
+//         $username = mysqli_real_escape_string($conn,$username);
+//         //protect database from harmful sql injections when inserting data to datbase
+//         $password = mysqli_real_escape_string($conn,$password);
+//     }
+//     if (!array_filter($errors)) {
+//         header('Location: home.php');
+//     }
+// }
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +51,7 @@ if (!array_filter($errors)) {
                 </div>
                 <span class="input-field">
                     <input type="text" name="username" id="username" class="input-box" placeholder="Username">
-                    <div class="red"><?php echo $errors['username']; ?></div>
+                    <div class="red"><?php //echo "*".$errors['username']; ?></div>
                 </span>
             </div>
             <div class="sub-container-1">
@@ -52,7 +60,7 @@ if (!array_filter($errors)) {
                 </div>
                 <span class="input-field">
                     <input type="password" name="pwd" id="pwd" class="input-box" placeholder="Password">
-                    <div class="red"><?php echo $errors['password']; ?></div>
+                    <div class="red"><?php //echo "*".$errors['password']; ?></div>
                 </span>
             </div>
             <div class="sub-container-2">

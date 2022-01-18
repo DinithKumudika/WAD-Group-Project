@@ -12,13 +12,13 @@ body {
 .title {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 50px;
-  margin: 40px auto 0px auto;
+  margin: 100px auto 0px auto;
   color: rgb(255, 255, 255);
   text-align: center;
 }
 
 .title-container {
-  margin-top: 0px;
+  position: relative;
   height: 250px;
 }
 
@@ -28,12 +28,13 @@ body {
 }
 
 form {
-  margin-top: -10px;
+  margin-top: -100px;
   margin-left: 20px;
   background-color: rgb(27, 98, 179,0.6);
   padding: 20px 10px 20px 20px;
   width: 600px;
   border-radius: 10px;
+  margin-bottom: 100px;
 }
 
 form div {
@@ -83,10 +84,11 @@ form div:last-child {
 
 .btn {
   height: 40px;
-  width: 350px;
+  width: 90%;
   border: 0px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   color: rgb(255, 255, 255);
   border-radius: 10px;
   font-size: 15px;
@@ -101,7 +103,7 @@ form div:last-child {
 }
 
 .contact-container{
-     margin: 40px auto 0px auto;
+     margin: -50px auto 0px auto;
 }
 
 .contact-media{
@@ -157,9 +159,23 @@ form div:last-child {
      color: rgb(33, 175, 44);
 }
 
+.red{
+  background-color: rgb(224, 49, 49);
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.green{
+  background-color: rgb(37, 172, 37);
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
 @media screen and (max-width: 860px) {
   form {
-    margin-top: 20px;
+    margin-top: -50px;
     margin-left: 20px;
     margin-bottom: 20px;
     background-color: rgb(27, 98, 179,0.6);
