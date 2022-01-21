@@ -29,12 +29,12 @@
     </a>
     <!--<i class="fa-solid fa-angles-down"></i>-->
   </div>
-  <div class="container" name="#registration">
+  <div class="container">
       <div class="container-1" id="con-1">
         <form action="../Modules/Auth.php" method="post">
           <h1 class="reg-title">Company Registration</h1>
           <p>Searching for best employes for your company? <br> Register today to find best skills for you</P>
-          <input type="button" class="btn" value="Register">
+          <a href="signup.php"><input type="button" class="btn" value="Register"></a>
         </form>
       </div>
       <div>
@@ -42,14 +42,23 @@
           <div class="container-2" id="con-2">
             <h1 class="reg-title">Candidate Registration</h1>
             <p>Looking for the job that suits you most? <br> Register and start searching!</p>
-            <input type="button" class="btn" value="Register">
+            <a href="signup.php"><input type="button" class="btn" value="Register"></a>
           </div>
         </form>
       </div>
   </div>
 
   <div class="container-3">
-    <h1>How CareerBuilder can help You</h1>
+    <h1>How Hire Me can help You?</h1>
+    <h2>Job Search</h2>
+    <div>
+      <form action="" method="post">
+        <input type="text" name="search" id="search">
+        <button type="submit" name="search-btn" id="search-btn" class="search-btn">
+          search
+        </button>
+      </form>
+    </div>
     <div></div>
   </div>
 

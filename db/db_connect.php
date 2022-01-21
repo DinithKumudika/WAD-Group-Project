@@ -1,10 +1,6 @@
 <?php
-  $host = "localhost";
-  $dbUsername = "root";
-  $dbPassword = "";
-  $dbName = "hire_me";
 
-  $conn = mysqli_connect($host,$dbName,$dbPassword,$dbName);
+  $conn = mysqli_connect('localhost','root','','hire_me');
 
   if(!$conn){
       die('Connection Error,'.mysqli_connect_error());

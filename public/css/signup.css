@@ -3,7 +3,7 @@
 
 body{
     background-image: url('../assets/images/bg2.jpg');
-    background-size:100%;
+    background-size:100% 150%;
     background-repeat: no-repeat;
     margin: 0;
     padding: 0px 20px 0px 20px;
@@ -35,7 +35,7 @@ body{
     margin: auto;
     top: 10px;
     height: 600px;
-    z-index: -1;
+    z-index: 0;
 }
 
 .form-container{
@@ -47,11 +47,11 @@ body{
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     height: 600px;
-    padding: 20px 10px 30px 10px;
+    padding: 20px 10px 50px 10px;
 }
 
 .signup-img img{
-    height: 625px;
+    height: 670px;
     max-width: 360px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -99,7 +99,7 @@ label{
     border: 2px solid white;
     border-radius: 15px;
     width: 53%;
-    height: 70px;
+    height: 50px;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -134,4 +134,35 @@ label{
 
 .red{
     color: rgb(216, 29, 29);
+}
+
+.email-notify{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+    color: white;
+    width: 350px;
+    height: auto;
+    font-size: 25px;
+    text-align: center;
+    padding: 0px 5px 0px 5px;
+    border-radius: 10px;
+}
+
+.email-green{
+    background-color: rgb(20, 141, 60);
+}
+
+.email-red{
+    background-color: rgb(180, 27, 27);
+}
+
+@media screen and (max-width: 860px) {
+    .signup-img {
+        display: none;
+    }
+
+    .form-container{
+        border-radius: 10px;
+    }
 }

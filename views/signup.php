@@ -1,10 +1,10 @@
 <?php
+  include('../db/db_connect.php');
  
   $errors = [
     'fname'=>'',
     'lname'=>'',
     'email'=>'',
-    'gender'=>'',
     'phone'=>'',
     'password'=>'',
   ];
@@ -14,45 +14,43 @@
     'failed'=>''
   ];
 
-  include './db/db_connect.php';
-
   if (isset($_POST['signup'])) {
     $firstName = mysqli_real_escape_string($conn,htmlspecialchars($_POST['f-name']));
     $lastName = mysqli_real_escape_string($conn,htmlspecialchars($_POST['l-name']));
     $email = mysqli_real_escape_string($conn,htmlspecialchars($_POST['e-mail'])) ;
-    $gender = mysqli_real_escape_string($conn,htmlspecialchars($_POST['gender']));
     $phoneNo = mysqli_real_escape_string($conn,htmlspecialchars($_POST['phone']));
     $password = mysqli_real_escape_string($conn,htmlspecialchars($_POST['password']));
-    $encrypted_password = sha1($password);
     $fullName = $firstName . ' ' . $lastName;
 
     if(empty($firstname)||empty($lastName)||!filter_var($email, FILTER_VALIDATE_EMAIL)||empty($gender)||empty($phoneNo)||empty($password)){
       if (empty($firstname)) {
-        $errors['fname'] = "First name is required";
+        $errors['fname'] = "*First name is required";
       }
   
       if(empty($lastName)){
-        $errors['lname'] = "Last name is required";
+        $errors['lname'] = "*Last name is required";
       }
   
       if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $errors['email'] = "Valid email is required";
-      }
-  
-      if(empty($gender)){
-        $errors['gender'] = "Gender is requierd";
+        $errors['email'] = "*Valid email is required";
       }
   
       if(empty($phoneNo)){
-        $errors['phone'] = "Phone number is required";
+        $errors['phone'] = "*Phone number is required";
       }
   
       if(empty($password)){
-        $errors['password'] = "Password is required";
+        $errors['password'] = "*Password is required";
       }
     }
     else{
       $verificationCode = sha1($email . time());
+      $query = "INSERT INTO (`first_name`,`last_name`,`email`,`phone_no`,`password`,`verification_code`,`is_active`)
+                VALUES
+                ('{$firstName}','{$lastName}','{$email}','{$phoneNo}','{$password}','{$verificationCode}',false);
+              ";
+      $result = mysqli_query($conn,$query);
+
       $verificationURL = 'http://localhost/WAD/models/verification.php?verification_code=' . $verificationCode;
 
       $to = $email;
@@ -68,19 +66,17 @@
         HireMe.lk
         </p>
       ';
-      $header = "From: {$sender}\r\n" .
-                "Content-Type: text/html\r\n";
+      $header = "From: {$sender}\r\n
+                Content-Type: text/html\r\n";
 
       $mail_sent = mail($to, $subject,$body, $header);
       if ($mail_sent) {
         $mail_notification['successfull'] = 'Email sent, check your emails';
+        header('Location: login.php');
       } 
       else {
         $mail_notification['failure'] = 'Email cannot be sent';
       }
-    }
-    if(!array_filter($errors)){
-      header('Location: login.php');
     }
   }
 ?>
@@ -106,30 +102,23 @@
                 <h1 class="login-text">SignUp</h1>
                 <label for="f-name">First Name:</label>
                 <input type="text" name="f-name" id="f-name" class="input-box">
-                <div class="red"><?php echo "*".$errors['fname'];?></div>
+                <div class="red"><?php echo $errors['fname'];?></div>
 
                 <label for="l-name">Last Name:</label>
                 <input type="text" name="l-name" id="l-name" class="input-box">
-                <div class="red"><?php echo "*".$errors['lname'];?></div>
+                <div class="red"><?php echo $errors['lname'];?></div>
 
                 <label for="l-name">E-mail:</label>
                 <input type="email" name="e-mail" id="e-mail" class="input-box">
-                <div class="red"><?php echo "*".$errors['email'];?></div>
-
-                <div class="sub-container-1">
-                    <label for="">Gender:</label>
-                    <label for="gender">Male</label><input type="radio" name="gender" id="male" class="gender-radio" value="M">
-                    <label for="gender">Female</label><input type="radio" name="gender" id="female" class="gender-radio" value="F">
-                </div>
-                <div class="red"><?php echo "*".$errors['gender'];?></div>
+                <div class="red"><?php echo $errors['email'];?></div>
 
                 <label for="phone">Phone no:</label>
                 <input type="text" name="phone" id="phone" class="input-box">
-                <div class="red"><?php echo "*".$errors['phone'];?></div>
+                <div class="red"><?php echo $errors['phone'];?></div>
 
                 <label for="create-pwd">Password:</label>
                 <input type="password" name="password" id="password" class="input-box">
-                <div class="red"><?php echo "*".+$errors['password'];?></div>
+                <div class="red"><?php echo $errors['password'];?></div>
 
                 <input type="submit" value="Sign Up" class="login-btn" name="signup">
                 <div class="sub-container-3">
@@ -138,6 +127,10 @@
             </div>
         </div>
     </form>
+    <div>
+      <p class="email-green email-notify"><?=$mail_notification['successfull'];?></p>
+      <p class="email-red email-notify"><?$mail_notification['failure'];?></p>
+    </div>
     <script>
         
     </script>

@@ -9,7 +9,7 @@
           $message = htmlspecialchars($_POST['message']);
 
           if (empty($fullName) || empty($email) || empty($subject) || empty($message)) {
-               $error = "all fields are required";
+               $error = "*all fields are required";
           }
           else{
                $from = $email;
