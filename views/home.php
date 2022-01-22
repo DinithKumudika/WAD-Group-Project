@@ -22,44 +22,53 @@
     <a href="#registration">
       <div>
         <h2 class="reg-now">Register Now</h2>
-          <span class="material-icons down-arrow">
-            keyboard_double_arrow_down
-          </span>
+        <span class="material-icons down-arrow">
+          keyboard_double_arrow_down
+        </span>
       </div>
     </a>
     <!--<i class="fa-solid fa-angles-down"></i>-->
   </div>
   <div class="container">
-      <div class="container-1" id="con-1">
-        <form action="../Modules/Auth.php" method="post">
-          <h1 class="reg-title">Company Registration</h1>
-          <p>Searching for best employes for your company? <br> Register today to find best skills for you</P>
+    <div class="container-1" id="con-1">
+      <form action="../Modules/Auth.php" method="post">
+        <h1 class="reg-title">Company Registration</h1>
+        <p>Searching for best employes for your company? <br> Register today to find best skills for you</P>
+        <a href="signup.php"><input type="button" class="btn" value="Register"></a>
+      </form>
+    </div>
+    <div>
+      <form action="../Modules/Auth.php" method="post">
+        <div class="container-2" id="con-2">
+          <h1 class="reg-title">Candidate Registration</h1>
+          <p>Looking for the job that suits you most? <br> Register and start searching!</p>
           <a href="signup.php"><input type="button" class="btn" value="Register"></a>
-        </form>
-      </div>
-      <div>
-        <form action="../Modules/Auth.php" method="post">
-          <div class="container-2" id="con-2">
-            <h1 class="reg-title">Candidate Registration</h1>
-            <p>Looking for the job that suits you most? <br> Register and start searching!</p>
-            <a href="signup.php"><input type="button" class="btn" value="Register"></a>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
+    </div>
   </div>
 
   <div class="container-3">
-    <h1>How Hire Me can help You?</h1>
-    <h2>Job Search</h2>
     <div>
-      <form action="" method="post">
-        <input type="text" name="search" id="search">
-        <button type="submit" name="search-btn" id="search-btn" class="search-btn">
-          search
-        </button>
-      </form>
+      <div>
+        <h1>How Hire Me can help You?</h1>
+        <h2>Job Search</h2>
+      </div>
+      <br>
+      <div>
+        <form action="" method="post">
+          <input type="text" name="search" id="search">
+          <button type="submit" name="search-btn" id="search-btn" class="search-btn">
+            search
+          </button>
+        </form>
+      </div>
     </div>
-    <div></div>
+    <div>
+      <p><i class="fa-solid fa-briefcase"></i>Find jobs easily with your preferences</p>
+      <p><i class="fa-solid fa-users"></i>Find best recruits for your organization</p>
+      <p><i class="fa-solid fa-gears"></i>24x7 technical support</p>
+    </div>
   </div>
 
   <?php

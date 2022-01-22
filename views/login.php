@@ -1,32 +1,39 @@
 <?php
-// include './db/db_connect.php';
+include('../db/db_connect.php');
 
-// $errors = [
-//     'username' => '',
-//     'password' => ''
-// ];
+$errors = [
+    'username' => '',
+    'password' => ''
+];
 
-// if (isset($_POST['login'])) {
-//     $username = htmlspecialchars($_POST['username']);
-//     $password = htmlspecialchars($_POST['pwd']);
+$wrongCredentials = '';
 
-//     if(empty($username)||empty($password)){
-//         if (empty($username)) {
-//             $errors['username'] = "username is required";
-//         }
-//         else{
-//             $errors['password'] = "password is required";
-//         }
-//     }
-//     else{ 
-//         $username = mysqli_real_escape_string($conn,$username);
-//         //protect database from harmful sql injections when inserting data to datbase
-//         $password = mysqli_real_escape_string($conn,$password);
-//     }
-//     if (!array_filter($errors)) {
-//         header('Location: home.php');
-//     }
-// }
+if (isset($_POST['login'])) {
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['pwd']);
+
+    if(empty($username)||empty($password)){
+        if (empty($username)) {
+            $errors['username'] = "*username is required";
+        }
+        else{
+            $errors['password'] = "*password is required";
+        }
+    }
+    else{ 
+        $username = mysqli_real_escape_string($conn,$username);
+        //protect database from harmful sql injections when inserting data to datbase
+        $password = mysqli_real_escape_string($conn,$password);
+        $query = "SELECT `email`,`password` FROM applicant_reg WHERE `email`='{$username}' AND `password`='{$password}'";
+        $result = mysqli_query($conn,$query);
+        if(mysqli_affected_rows($conn)==1){
+            header('Location:home.php');
+        }
+        else{
+            $wrongCredentials = 'wrong username or password';
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +58,7 @@
                 </div>
                 <span class="input-field">
                     <input type="text" name="username" id="username" class="input-box" placeholder="Username">
-                    <div class="red"><?php //echo "*".$errors['username']; ?></div>
+                    <div class="red"><?=$errors['username']; ?></div>
                 </span>
             </div>
             <div class="sub-container-1">
@@ -60,7 +67,7 @@
                 </div>
                 <span class="input-field">
                     <input type="password" name="pwd" id="pwd" class="input-box" placeholder="Password">
-                    <div class="red"><?php //echo "*".$errors['password']; ?></div>
+                    <div class="red"><?=$errors['password']; ?></div>
                 </span>
             </div>
             <div class="sub-container-2">
@@ -75,6 +82,7 @@
             </div>
         </div>
     </form>
+    <p class="wrong-cred">wrong username or password</p>
     <script src="../public/js/login.js"></script>
 </body>
 

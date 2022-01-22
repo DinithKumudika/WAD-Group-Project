@@ -9,7 +9,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(95, 95, 95);
     scroll-behavior: smooth;
 }
 
@@ -139,9 +139,11 @@ body{
 }
 
 .container-3{
-    height: 400px;
+    height: 500px;
     background-color: rgb(36, 36, 36);
-    padding: 20px 30px 10px 50px;
+    padding: 20px 20px 30px 30px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .container-3 h1{
@@ -159,10 +161,11 @@ body{
 
 .container-3 div{
     display: flex;
+    flex-direction: column;
 }
 
 .container-3 div #search{
-    border: 0px solid;
+    border: 3px solid transparent;
     height: 50px;
     width: 400px;
     padding-left: 5px;
@@ -171,8 +174,13 @@ body{
     border-top-left-radius: 10px;
 }
 
+.container-3 div #search:focus{
+    outline: none;
+    border: 3px solid rgb(51, 125, 195,0.8);
+}
+
 .container-3 div .search-btn{
-    height: 50px;
+    height: 56px;
     background-color: rgb(23, 160, 80);
     border: 0px solid;
     color: white;
@@ -186,6 +194,33 @@ body{
 
 .container-3 div .search-btn:hover{
     cursor: pointer;
+}
+
+.container-3 div:last-child{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.container-3 div:last-child p{
+    font-size: 30px;
+    color: white;
+}
+
+.container-3 div:last-child p:first-child{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.container-3 div:last-child p:last-child{
+    margin-top: 40px;
+}
+
+
+.container-3 div:last-child .fa-solid{
+    margin-right: 20px;
+    font-size: 50px;
+   padding-top: 10px;
 }
 
 @media screen and (max-width: 1007px) {
@@ -213,5 +248,9 @@ body{
 
     .container-2{
         margin-top: 10px;
+    }
+
+    .container-3{
+        flex-direction: column;
     }
 }

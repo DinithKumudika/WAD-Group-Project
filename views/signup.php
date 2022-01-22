@@ -1,5 +1,6 @@
 <?php
   include('../db/db_connect.php');
+  include('../models/verification.php');
  
   $errors = [
     'fname'=>'',
@@ -23,7 +24,7 @@
     $fullName = $firstName . ' ' . $lastName;
 
     if(empty($firstname)||empty($lastName)||!filter_var($email, FILTER_VALIDATE_EMAIL)||empty($gender)||empty($phoneNo)||empty($password)){
-      if (empty($firstname)) {
+      if (empty($firstName)) {
         $errors['fname'] = "*First name is required";
       }
   

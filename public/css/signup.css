@@ -42,7 +42,7 @@ body{
     display: flex;
     flex-direction: column;
     width:500px;
-    background-color: rgb(27, 98, 179,0.6);
+    background-color: rgb(27, 98, 179,0.8);
     border-radius: 10px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -124,7 +124,8 @@ label{
 
 .sub-container-3 p{
     font-family: 'Open Sans', sans-serif;
-    font-size: 13px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .sub-container-3 p a{
