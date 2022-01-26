@@ -75,6 +75,27 @@ nav ul li a:hover:before {
   transform-origin: left;
 }
 
+.login-btn{
+  margin-top: -5px;
+  margin-left: 10px;
+  background-color: white;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid transparent;
+}
+
+.login-btn a{
+  text-decoration: none;
+  color: rgb(18, 75, 199);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.disabled-link{
+  pointer-events: none;
+}
+
 .menu-btn, .close-btn {
   color: rgb(66, 66, 66);
   font-size: 40px;
@@ -85,7 +106,6 @@ nav ul li a:hover:before {
   cursor: pointer;
   display: none;
 }
-
 
 
 @media screen and (max-width: 1300px) {

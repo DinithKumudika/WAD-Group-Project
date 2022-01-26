@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../db/db_connect.php');
 
 $errors = [
@@ -24,9 +25,11 @@ if (isset($_POST['login'])) {
         $username = mysqli_real_escape_string($conn,$username);
         //protect database from harmful sql injections when inserting data to datbase
         $password = mysqli_real_escape_string($conn,$password);
-        $query = "SELECT `email`,`password` FROM applicant_reg WHERE `email`='{$username}' AND `password`='{$password}'";
+        $query = "SELECT `username`,`password` FROM applicant_reg WHERE `username`='{$username}' AND `password`='{$password}'";
         $result = mysqli_query($conn,$query);
         if(mysqli_affected_rows($conn)==1){
+            $user_details =mysqli_fetch_assoc($result);
+            $_SESSION['username'] = $user_details['username'];
             header('Location:home.php');
         }
         else{

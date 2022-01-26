@@ -7,6 +7,7 @@
     'lname'=>'',
     'email'=>'',
     'phone'=>'',
+    'username'=>'',
     'password'=>'',
   ];
 
@@ -18,12 +19,13 @@
   if (isset($_POST['signup'])) {
     $firstName = mysqli_real_escape_string($conn,htmlspecialchars($_POST['f-name']));
     $lastName = mysqli_real_escape_string($conn,htmlspecialchars($_POST['l-name']));
-    $email = mysqli_real_escape_string($conn,htmlspecialchars($_POST['e-mail'])) ;
+    $email = mysqli_real_escape_string($conn,htmlspecialchars($_POST['e-mail']));
     $phoneNo = mysqli_real_escape_string($conn,htmlspecialchars($_POST['phone']));
+    $username = mysqli_real_escape_string($conn,htmlspecialchars($_POST['usernam']));
     $password = mysqli_real_escape_string($conn,htmlspecialchars($_POST['password']));
     $fullName = $firstName . ' ' . $lastName;
 
-    if(empty($firstname)||empty($lastName)||!filter_var($email, FILTER_VALIDATE_EMAIL)||empty($gender)||empty($phoneNo)||empty($password)){
+    if(empty($firstname)||empty($lastName)||!filter_var($email, FILTER_VALIDATE_EMAIL)||empty($gender)||empty($phoneNo)||empty($username)||empty($password)){
       if (empty($firstName)) {
         $errors['fname'] = "*First name is required";
       }
@@ -39,6 +41,10 @@
       if(empty($phoneNo)){
         $errors['phone'] = "*Phone number is required";
       }
+
+      if(empty($username)){
+        $errors['password'] = "*Password is required";
+      }
   
       if(empty($password)){
         $errors['password'] = "*Password is required";
@@ -46,9 +52,9 @@
     }
     else{
       $verificationCode = sha1($email . time());
-      $query = "INSERT INTO (`first_name`,`last_name`,`email`,`phone_no`,`password`,`verification_code`,`is_active`)
+      $query = "INSERT INTO (`first_name`,`last_name`,`email`,`phone_no`,`username`,`password`,`verification_code`,`is_active`)
                 VALUES
-                ('{$firstName}','{$lastName}','{$email}','{$phoneNo}','{$password}','{$verificationCode}',false);
+                ('{$firstName}','{$lastName}','{$email}','{$phoneNo}','{$password}','{$verificationCode}','false');
               ";
       $result = mysqli_query($conn,$query);
 
