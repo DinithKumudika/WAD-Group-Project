@@ -13,9 +13,11 @@ table{
      width: 80%;
 }
 
-table td{
+table .td-1, .td-2, .td-3{
      padding: 10px 20px;
      text-align: center;
+     background-color: rgb(54, 91, 212);
+     color: white;
 }
 
 table thead tr{
@@ -24,9 +26,11 @@ table thead tr{
 
 table thead tr th{
      border-bottom: 1px solid grey;
+     padding-top: 5px;
+     padding-bottom: 5px;
 }
 
-button{
+.apply{
      padding: 8px 20px;
      background-color: rgb(31, 153, 68);
      color: white;
@@ -35,9 +39,10 @@ button{
      font-weight: bold;
      margin-left: auto;
      margin-right: auto;
+     margin-left: 10px;
 }
 
-button:hover{
+.apply:hover{
      cursor: pointer;
 }
 

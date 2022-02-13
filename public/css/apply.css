@@ -56,6 +56,15 @@ body{
 	padding: 20px;
 	position: relative;
 	border-radius: 5px;
+     z-index: 100;
+}
+
+
+.address{
+     margin-left: auto;
+     margin-right: auto;
+     display: flex;
+     flex-direction: row;
 }
 
 .model-sub-container{
@@ -70,13 +79,6 @@ input {
 	padding: 8px;
 }
 
-textarea{
-     width: 50%;
-     margin: 15px auto;
-	display: block;
-     padding: 8px;
-}
-
 select{
      width: 51%;
      display: block;
@@ -88,6 +90,15 @@ select{
 
 option:hover{
      background-color: rgb(31, 141, 251);
+}
+
+
+.address-1,.address-2{
+     width: 350px;
+}
+
+.address-1{
+     margin-right: 20px;
 }
 
 .btn{
@@ -116,3 +127,51 @@ option:hover{
 .close:hover{
      color: #666;
 }
+
+.cv-upload{
+     display: flex;
+     flex-direction: row;
+}
+
+#cv-upload{
+     display: none;
+}
+
+#cv-btn{
+     margin: 10px auto;
+     padding: 5px 10px;
+     background-color: rgb(21, 163, 56);
+     color: white;
+     border: 1px solid transparent;
+     border-radius: 5px;
+     font-weight: bold;
+     font-size: 15px;
+}
+
+#cv-btn:hover{
+     cursor: pointer;
+}
+
+#cv-text{
+     margin-left: 10px;
+     color: rgb(133, 132, 132);
+}
+
+.err{
+     color: rgb(179, 42, 42);
+     font-size: 15px;
+}
+
+@media screen and (max-width: 950px) {
+     .address{
+          margin-left: auto;
+          margin-right: auto;
+          display: flex;
+          flex-direction: column;
+     }
+
+     .address-1{
+          margin-right: 0px;
+     }
+
+ }

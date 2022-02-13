@@ -4,17 +4,22 @@ include('../db/db_connect.php');
 $error ='';
 
 if(isset($_POST['add-vacancy'])){
-     $job_title = $_POST['job-title'];
-     $company_name = $_POST['company'];
-     $job_position = $_POST['position'];
-     $salary = $_POST['salary'];
-     $job_category = $_POST['category'];
-     $job_description = $_POST['job-description'];
-     if(empty($job_title)||empty($company_name)||empty($salary)||empty($job_category)||empty($job_description)){
-          $error = 'All fields are required';
+     $job_title = mysqli_escape_string($conn,htmlspecialchars($_POST['job-title']));
+     $company_name = mysqli_escape_string($conn,htmlspecialchars($_POST['company']));
+     $job_position = mysqli_escape_string($conn,htmlspecialchars($_POST['position']));
+     $salary = mysqli_escape_string($conn,htmlspecialchars($_POST['salary']));
+     $job_category = mysqli_escape_string($conn,htmlspecialchars($_POST['category']));
+     $job_description = mysqli_escape_string($conn,htmlspecialchars($_POST['job-description']));
+     if(empty($job_title)||empty($company_name)||empty($job_position)||empty($salary)||empty($job_category)||empty($job_description)){
+          echo '<script>alert("All fields are required!");</script>';
      }
      else{
-          header('Location:hire.php');
+          $query ="INSERT INTO vacancy(`job_title`,`position`,`company`,`salary`,`category`,`description`) 
+          VALUES ('{$job_title}','{$job_position}','{$company_name}','{$salary}','{$job_category}','{$job_description}');";
+          $result= mysqli_query($conn,$query);
+          if($result){
+               header('Location:hire.php');
+          }
      }
 }
 ?>
@@ -68,9 +73,9 @@ if(isset($_POST['add-vacancy'])){
                     <input type="text" placeholder="Salary" name="salary">
                </div>
                <div class="model-sub-container">
-                    <label for="salary">Category:</label>
-                    <select name="categories" id="job-cat" name="categories">
-                         <option value="deafault" disabled='disabled' default>Choose job category..</option>
+                    <label for="category">Category:</label>
+                    <select name="category" id="job-cat">
+                         <option value="deafault" disabled='disabled' selected>Choose job category..</option>
                          <option value="cat-1">Administration,business and management</option>
                          <option value="cat-2">Computing and IT</option>
                          <option value="cat-3">Construction and building</option>

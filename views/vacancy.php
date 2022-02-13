@@ -1,4 +1,25 @@
 <?php
+
+include('../db/db_connect.php');
+$query = "SELECT * FROM vacancy";
+$i = 0;
+$rows;
+$result = mysqli_query($conn, $query);
+if ($result) {
+     while ($job_details = mysqli_fetch_assoc($result)) {
+          $rows[$i] = $job_details;
+          $i++;
+     }
+}
+if (isset($_POST['apply'])) {
+     session_start();
+     $_SESSION['job-title'] = $row['job_title'];
+     $_SESSION['job-position'] = $row['position'];
+     $_SESSION['company'] = $row['company'];
+     $_SESSION['salary'] = $row['salary'];
+     $_SESSION['job-description'] = $row['description'];
+     header('Location:apply.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,18 +48,26 @@
                     <th>salary</th>
                </tr>
           </thead>
-          <tr>
-               <td>Web Developer</td>
-               <td>ABC Infotech Pvt Ltd</td>
-               <td>Rs.150,000</td>
-               <td><button>Apply</button></td>
-          </tr>
-          <tr>
-               <td>Business Analyst</td>
-               <td>XYZ Pvt Ltd</td>
-               <td>Rs.125,000</td>
-               <td><a href="apply.php"><button id="button">Apply</button></a></td>
-          </tr>
+
+          <?php foreach ($rows as $row) { ?>
+               <form action="apply.php" method="post">
+                    <?php $id = $row['vacancy_id'] ?>
+                    <tr>
+                         <td class="td-1">
+                              <?= $row['position']; ?>
+                         </td>
+                         <td class="td-2">
+                              <?= $row['company']; ?>
+                         </td>
+                         <td class="td-3">
+                              <?= $row['salary']; ?>
+                         </td>
+                         <td class="td-4">
+                              <input type="submit" value="Apply" class="apply" name="apply">
+                         </td>
+                    </tr>
+               </form>
+          <?php } ?>
      </table>
      <?php
      include('footer.php');

@@ -4,10 +4,17 @@
   $login_display = '';
   $loginpage_link = '';
   $disabled = '';
+  $logout = '';
 
   if(isset($_SESSION['username'])){
       $login_display = $_SESSION['username'];
       $disabled = 'disabled-link';
+      $logout = '<input class="logout" type="submit" value="logout" name="logout">';
+      if(isset($_POST['logout'])){
+          session_destroy();
+          header('Location:login.php');
+      }
+      
   }
   else{
       $login_display = 'Login';
@@ -26,7 +33,10 @@
         <li><a href="#">Hire</a></li>
         <li><a href="./contact.php">Contact Us</a></li>
         <li><a href="#">Help</a></li>
-        <button class="login-btn {$disabled}"><a href=<?=$loginpage_link?>><?=$login_display?></a></button>
+        <button class="login-btn {$disabled}" id="login"><a href=<?=$loginpage_link?>><?=$login_display?></a></button>
+        <form action="header.php" method="post">
+          <?= $logout; ?>
+        </form>
     </ul>
     <script src="../public/js/header.js"></script>
 </nav>

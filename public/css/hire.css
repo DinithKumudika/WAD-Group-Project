@@ -103,3 +103,8 @@ option:hover{
 .close:hover{
      color: #666;
 }
+
+.err-text{
+     font-size: 15px;
+     color: rgb(189, 49, 49);
+}

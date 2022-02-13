@@ -17,4 +17,10 @@ closeBtn.addEventListener('click', function () {
     menuBtn.style.display="block";
 });
 
+const loginBtn = document.getElementById("login");
+
+loginBtn.addEventListener('click',function(){
+    
+});
+
 

@@ -1,3 +1,25 @@
+<?php
+  session_start();
+  if(isset($_SESSION['job-title']) & isset($_SESSION['job-position']) & isset($_SESSION['company'])){
+     echo $_SESSION['job-title'];
+     echo $_SESSION['job-position'];
+     echo $_SESSION['company'];
+
+     if(isset($_POST['apply'])){
+          $full_name = $_POST['full-name'];
+          $address_line1 = $_POST['address-1'];
+          $address_line2 = $_POST['address-2'];
+          $phone_no = $_POST['phone-no'];
+          $NIC = $_POST['nic'];
+          $district = $_POST['district'];
+          $resume = $_FILES['cv'];
+     }
+  }
+  else{
+     echo "error";
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +42,7 @@
      <div class="job-details">
           <h2>Web Developer</h2>
           <h3>We are looking for a skilled web developer who will be responsible for developing and/or designing websites for our company. You will be working alongside a team of other developers in creating, maintaining, and updating our websites.
-In order for you to succeed in this role, you will need to be proficient in JavaScript, HTML, CSS, and have solid knowledge and experience in programming applications.</h3>
+               In order for you to succeed in this role, you will need to be proficient in JavaScript, HTML, CSS, and have solid knowledge and experience in programming applications.</h3>
 
           <div class="btn-container">
                <button class="add-btn" id="button">
@@ -29,59 +51,82 @@ In order for you to succeed in this role, you will need to be proficient in Java
           </div>
      </div>
      <div class="bg-modal">
-               <div class="modal-contents">
-
-                    <div class="close">+</div>
-                    <img src="https://richardmiddleton.me/comic-100.png" alt="">
-
-                    <form action="hire.php" method="POST">
-                         <div class="model-sub-container">
-                              <label for="job-title">Job Title:</label>
-                              <input type="text" placeholder="Job Title" name="job-title">
+          <div class="modal-contents">
+               <div class="close">+</div>
+               <form action="" method="POST">
+                    <div class="model-sub-container">
+                         <label for="job-title">Full Name:</label>
+                         <input type="text" placeholder="Full name" name="full-name">
+                         <p class="err">*this field required</p>
+                    </div>
+                    <div class="model-sub-container">
+                         <label for="position">Address:</label>
+                         <div class="address">
+                              <div>
+                                   <input type="text" placeholder="Address line 1" name="position" class="address-1" name="address-1">
+                              </div>
+                              <div>
+                                   <input type="text" placeholder="Address line 2" name="position" class="address-2" name="address-2">
+                              </div>
                          </div>
-                         <div class="model-sub-container">
-                              <label for="position">Position:</label>
-                              <input type="text" placeholder="Position" name="position">
+                         <p class="err">*this fields required</p>
+                    </div>
+                    <div class="model-sub-container">
+                         <label for="salary">Phone no:</label>
+                         <input type="text" placeholder="Phone no" name="phone-no">
+                         <p class="err">*this field required</p>
+                    </div>
+                    <div class="model-sub-container">
+                         <label for="nic">NIC:</label>
+                         <input type="text" placeholder="NIC" name="nic">
+                         <p class="err">*this field required</p>
+                    </div>
+                    <div class="model-sub-container">
+                         <label for="district">District:</label>
+                         <select name="districts" id="district" name="district">
+                              <option value="deafault" disabled='disabled' selected>choose you district</option>
+                              <option value="dist-1">Ampara</option>
+                              <option value="dist-2">Anuradhapura</option>
+                              <option value="dist-3">Badulla</option>
+                              <option value="dist-4">Batticaloa</option>
+                              <option value="dist-5">Colombo</option>
+                              <option value="dist-6">Financial</option>
+                              <option value="dist-7">Galle</option>
+                              <option value="dist-8">Gampaha</option>
+                              <option value="dist-9">Hambantota</option>
+                              <option value="dist-10">Jaffna</option>
+                              <option value="dist-11">Kalutara</option>
+                              <option value="dist-12">Kandy</option>
+                              <option value="dist-13">Kegalle</option>
+                              <option value="dist-14">Kilinochchi</option>
+                              <option value="dist-15">Kurunegala</option>
+                              <option value="dist-16">Mannar</option>
+                              <option value="dist-17">Matale</option>
+                              <option value="dist-18">Matara</option>
+                              <option value="dist-19">Monaragala</option>
+                              <option value="dist-20">Mullaitivu</option>
+                              <option value="dist-21">Nuwara Eliya</option>
+                              <option value="dist-22">Polonnnaruwa</option>
+                              <option value="dist-23">Puttalam</option>
+                              <option value="dist-24">Ratnapura</option>
+                              <option value="dist-25">Trincomalee</option>
+                              <option value="dist-26">Vavuniya</option>
+                         </select>
+                         <p class="err">*this field required</p>
+                    </div>
+                    <div class="model-sub-container" class="cv-upload">
+                         <label for="cv">Upload Resume:</label>
+                         <div>
+                              <input type="file" name="cv" id="cv-upload">
+                              <button id="cv-btn" type="button">Upload resume</button>
+                              <span id="cv-text">No file chosen...</span>
                          </div>
-                         <div class="model-sub-container">
-                              <label for="salary">Company:</label>
-                              <input type="text" placeholder="Company name" name="company">
-                         </div>
-                         <div class="model-sub-container">
-                              <label for="salary">Salary:</label>
-                              <input type="text" placeholder="Salary" name="salary">
-                         </div>
-                         <div class="model-sub-container">
-                              <label for="salary">Category:</label>
-                              <select name="categories" id="job-cat" name="categories">
-                                   <option value="deafault" disabled='disabled' default>Choose job category..</option>
-                                   <option value="cat-1">Administration,business and management</option>
-                                   <option value="cat-2">Computing and IT</option>
-                                   <option value="cat-3">Construction and building</option>
-                                   <option value="cat-4">Education and training</option>
-                                   <option value="cat-5">Engineering</option>
-                                   <option value="cat-6">Financial</option>
-                                   <option value="cat-7">Graphic Design</option>
-                                   <option value="cat-8">Healthcare</option>
-                                   <option value="cat-9">Hospitality and tourism</option>
-                                   <option value="cat-10">Human Resources</option>
-                                   <option value="cat-11">Law</option>
-                                   <option value="cat-12">Manufacturing and production</option>
-                                   <option value="cat-13">Retail and customer Services</option>
-                                   <option value="cat-14">Printing,publishing and advertising</option>
-                                   <option value="cat-15">Security,uniformed and protective services</option>
-                                   <option value="cat-16">Sport and leisure</option>
-                                   <option value="cat-17">Transport,distibution and logistics</option>
-                              </select>
-                         </div>
-                         <div class="model-sub-container">
-                              <label for="job-description">Description:</label>
-                              <textarea name="job-description" cols="100" rows="10" placeholder="Job Description"></textarea>
-                         </div>
-                         <input type="submit" value="Post Vacancy" name="add-vacancy" class="btn">
-                    </form>
-               </div>
+                         <p class="err">*this field required</p>
+                    </div>
+                    <input type="submit" value="Apply for job" name="apply" class="btn">
+               </form>
           </div>
+     </div>
      <?php
      include('footer.php');
      ?>
