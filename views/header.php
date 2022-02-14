@@ -1,5 +1,4 @@
 <?php
-  session_start();
 
   $login_display = '';
   $loginpage_link = '';
@@ -29,8 +28,8 @@
     <div class="logo-container"><img src="../public/assets/images/logo.png" alt="" class="logo"></div>
     <ul id="nav-list">
         <li><a href="./home.php">Home</a></li>
-        <li><a href="#">Vacancies</a></li>
-        <li><a href="#">Hire</a></li>
+        <li><a href="./vacancy.php">Vacancies</a></li>
+        <li><a href="./hire.php">Hire</a></li>
         <li><a href="./contact.php">Contact Us</a></li>
         <li><a href="#">Help</a></li>
         <button class="login-btn {$disabled}" id="login"><a href=<?=$loginpage_link?>><?=$login_display?></a></button>

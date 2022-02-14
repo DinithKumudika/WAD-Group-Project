@@ -1,10 +1,4 @@
 <?php
-  session_start();
-  if(isset($_SESSION['job-title']) & isset($_SESSION['job-position']) & isset($_SESSION['company'])){
-     echo $_SESSION['job-title'];
-     echo $_SESSION['job-position'];
-     echo $_SESSION['company'];
-
      if(isset($_POST['apply'])){
           $full_name = $_POST['full-name'];
           $address_line1 = $_POST['address-1'];
@@ -14,10 +8,6 @@
           $district = $_POST['district'];
           $resume = $_FILES['cv'];
      }
-  }
-  else{
-     echo "error";
-  }
 ?>
 
 <!DOCTYPE html>
@@ -85,32 +75,32 @@
                          <label for="district">District:</label>
                          <select name="districts" id="district" name="district">
                               <option value="deafault" disabled='disabled' selected>choose you district</option>
-                              <option value="dist-1">Ampara</option>
-                              <option value="dist-2">Anuradhapura</option>
-                              <option value="dist-3">Badulla</option>
-                              <option value="dist-4">Batticaloa</option>
-                              <option value="dist-5">Colombo</option>
-                              <option value="dist-6">Financial</option>
-                              <option value="dist-7">Galle</option>
-                              <option value="dist-8">Gampaha</option>
-                              <option value="dist-9">Hambantota</option>
-                              <option value="dist-10">Jaffna</option>
-                              <option value="dist-11">Kalutara</option>
-                              <option value="dist-12">Kandy</option>
-                              <option value="dist-13">Kegalle</option>
-                              <option value="dist-14">Kilinochchi</option>
-                              <option value="dist-15">Kurunegala</option>
-                              <option value="dist-16">Mannar</option>
-                              <option value="dist-17">Matale</option>
-                              <option value="dist-18">Matara</option>
-                              <option value="dist-19">Monaragala</option>
-                              <option value="dist-20">Mullaitivu</option>
-                              <option value="dist-21">Nuwara Eliya</option>
-                              <option value="dist-22">Polonnnaruwa</option>
-                              <option value="dist-23">Puttalam</option>
-                              <option value="dist-24">Ratnapura</option>
-                              <option value="dist-25">Trincomalee</option>
-                              <option value="dist-26">Vavuniya</option>
+                              <option value="Ampara">Ampara</option>
+                              <option value="Anuradhapura">Anuradhapura</option>
+                              <option value="Badulla">Badulla</option>
+                              <option value="Batticaloa">Batticaloa</option>
+                              <option value="Colombo">Colombo</option>
+                              <option value="Financial">Financial</option>
+                              <option value="Galle">Galle</option>
+                              <option value="Gampaha">Gampaha</option>
+                              <option value="Hambantota">Hambantota</option>
+                              <option value="Jaffna">Jaffna</option>
+                              <option value="Kalutara">Kalutara</option>
+                              <option value="Kandy">Kandy</option>
+                              <option value="Kegalle">Kegalle</option>
+                              <option value="Kilinochchi">Kilinochchi</option>
+                              <option value="Kurunegala">Kurunegala</option>
+                              <option value="Mannar">Mannar</option>
+                              <option value="Matale">Matale</option>
+                              <option value="Matara">Matara</option>
+                              <option value="Monaragala">Monaragala</option>
+                              <option value="Mullaitivu">Mullaitivu</option>
+                              <option value="Nuwara Eliya">Nuwara Eliya</option>
+                              <option value="Polonnnaruwa">Polonnnaruwa</option>
+                              <option value="Puttalam">Puttalam</option>
+                              <option value="Ratnapura">Ratnapura</option>
+                              <option value="Trincomalee">Trincomalee</option>
+                              <option value="Vavuniya">Vavuniya</option>
                          </select>
                          <p class="err">*this field required</p>
                     </div>

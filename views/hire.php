@@ -76,23 +76,23 @@ if(isset($_POST['add-vacancy'])){
                     <label for="category">Category:</label>
                     <select name="category" id="job-cat">
                          <option value="deafault" disabled='disabled' selected>Choose job category..</option>
-                         <option value="cat-1">Administration,business and management</option>
-                         <option value="cat-2">Computing and IT</option>
-                         <option value="cat-3">Construction and building</option>
-                         <option value="cat-4">Education and training</option>
-                         <option value="cat-5">Engineering</option>
-                         <option value="cat-6">Financial</option>
-                         <option value="cat-7">Graphic Design</option>
-                         <option value="cat-8">Healthcare</option>
-                         <option value="cat-9">Hospitality and tourism</option>
-                         <option value="cat-10">Human Resources</option>
-                         <option value="cat-11">Law</option>
-                         <option value="cat-12">Manufacturing and production</option>
-                         <option value="cat-13">Retail and customer Services</option>
-                         <option value="cat-14">Printing,publishing and advertising</option>
-                         <option value="cat-15">Security,uniformed and protective services</option>
-                         <option value="cat-16">Sport and leisure</option>
-                         <option value="cat-17">Transport,distibution and logistics</option>
+                         <option value="Administration,business and management">Administration,business and management</option>
+                         <option value="Computing and IT">Computing and IT</option>
+                         <option value="Construction and building">Construction and building</option>
+                         <option value="Education and training">Education and training</option>
+                         <option value="Engineering">Engineering</option>
+                         <option value="Financial">Financial</option>
+                         <option value="Graphic Design">Graphic Design</option>
+                         <option value="Healthcare">Healthcare</option>
+                         <option value="Hospitality and tourism">Hospitality and tourism</option>
+                         <option value="Human Resources">Human Resources</option>
+                         <option value="Law">Law</option>
+                         <option value="Manufacturing and production">Manufacturing and production</option>
+                         <option value="Retail and customer Services">Retail and customer Services</option>
+                         <option value="Printing,publishing and advertising">Printing,publishing and advertising</option>
+                         <option value="Security,uniformed and protective services">Security,uniformed and protective services</option>
+                         <option value="Sport and leisure">Sport and leisure</option>
+                         <option value="Transport,distibution and logistics">Transport,distibution and logistics</option>
                     </select>
                </div>
                <div class="model-sub-container">

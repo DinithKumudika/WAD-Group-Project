@@ -8,6 +8,7 @@
     'email'=>'',
     'phone'=>'',
     'username'=>'',
+    'dup_username'=>'',
     'password'=>'',
   ];
 
@@ -24,6 +25,13 @@
     $username = mysqli_real_escape_string($conn,htmlspecialchars($_POST['username']));
     $password = mysqli_real_escape_string($conn,htmlspecialchars($_POST['password']));
     $fullName = $firstName . ' ' . $lastName;
+
+    $query1 = "SELECT `username` FROM applicant_reg WHERE `username`='$username' LIMIT 1";
+    $result1 = mysqli_query($conn,$query1);
+
+    if($result1){
+      $errors['dup_username'] = "This username is already taken";
+    }
 
     if(empty($firstname)||empty($lastName)||!filter_var($email, FILTER_VALIDATE_EMAIL)||empty($gender)||empty($phoneNo)||empty($username)||empty($password)){
       if (empty($firstName)) {
@@ -52,11 +60,11 @@
     }
     else{
       $verificationCode = sha1($email . time());
-      $query = "INSERT INTO applicant_reg(`first_name`,`last_name`,`email`,`phone_no`,`username`,`password`,`verification_code`,`is_active`)
+      $query2 = "INSERT INTO applicant_reg(`first_name`,`last_name`,`email`,`phone_no`,`username`,`password`,`verification_code`,`is_active`)
                 VALUES
                 ('{$firstName}','{$lastName}','{$email}','{$phoneNo}','{$username}','{$password}','{$verificationCode}',false);
               ";
-      $result = mysqli_query($conn,$query);
+      $result2 = mysqli_query($conn,$query2);
 
       $verificationURL = 'http://localhost/WAD/models/verification.php?verification_code=' . $verificationCode;
 
@@ -99,7 +107,6 @@
     <title>Signup</title>
 </head>
 <body>
-    <h1 class="heading">Join with us and shape your future</h1>
     <form action="regular_signup.php" method="post">
         <div class="signup-container">
             <div class="signup-img">
@@ -109,27 +116,28 @@
                 <h1 class="login-text">SignUp</h1>
                 <label for="f-name">First Name:</label>
                 <input type="text" name="f-name" id="f-name" class="input-box">
-                <div class="red"><?php echo $errors['fname'];?></div>
+                <div class="red"><?=$errors['fname'];?></div>
 
                 <label for="l-name">Last Name:</label>
                 <input type="text" name="l-name" id="l-name" class="input-box">
-                <div class="red"><?php echo $errors['lname'];?></div>
+                <div class="red"><?=$errors['lname'];?></div>
 
                 <label for="l-name">E-mail:</label>
                 <input type="email" name="e-mail" id="e-mail" class="input-box">
-                <div class="red"><?php echo $errors['email'];?></div>
+                <div class="red"><?=$errors['email'];?></div>
 
                 <label for="phone">Phone no:</label>
                 <input type="text" name="phone" id="phone" class="input-box">
-                <div class="red"><?php echo $errors['phone'];?></div>
+                <div class="red"><?=$errors['phone'];?></div>
 
                 <label for="phone">Username:</label>
                 <input type="text" name="username" id="username" class="input-box">
-                <div class="red"><?php echo $errors['username'];?></div>
+                <div class="red"><?=$errors['username'];?></div>
+                <div class="red"><?=$errors['dup_username'];?></div>
 
                 <label for="create-pwd">Password:</label>
                 <input type="password" name="password" id="password" class="input-box">
-                <div class="red"><?php echo $errors['password'];?></div>
+                <div class="red"><?=$errors['password'];?></div>
 
                 <input type="submit" value="Sign Up" class="login-btn" name="signup">
                 <div class="sub-container-3">
@@ -140,7 +148,7 @@
     </form>
     <div>
       <p class="email-green email-notify"><?=$mail_notification['successfull'];?></p>
-      <p class="email-red email-notify"><?$mail_notification['failure'];?></p>
+      <p class="email-red email-notify"><?=$mail_notification['failure'];?></p>
     </div>
     <script>
         

@@ -1,24 +1,13 @@
 <?php
-
+session_start();
 include('../db/db_connect.php');
 $query = "SELECT * FROM vacancy";
 $i = 0;
 $rows;
 $result = mysqli_query($conn, $query);
-if ($result) {
-     while ($job_details = mysqli_fetch_assoc($result)) {
-          $rows[$i] = $job_details;
-          $i++;
-     }
-}
+
 if (isset($_POST['apply'])) {
-     session_start();
-     $_SESSION['job-title'] = $row['job_title'];
-     $_SESSION['job-position'] = $row['position'];
-     $_SESSION['company'] = $row['company'];
-     $_SESSION['salary'] = $row['salary'];
-     $_SESSION['job-description'] = $row['description'];
-     header('Location:apply.php');
+     $_SESSION['vacancy-id'] = $row['vacancy_id'];
 }
 ?>
 <!DOCTYPE html>
@@ -49,8 +38,8 @@ if (isset($_POST['apply'])) {
                </tr>
           </thead>
 
-          <?php foreach ($rows as $row) { ?>
-               <form action="apply.php" method="post">
+          <?php while($row = mysqli_fetch_array($result)) { ?>
+               <form action="vacancy.php" method="post">
                     <?php $id = $row['vacancy_id'] ?>
                     <tr>
                          <td class="td-1">
@@ -63,7 +52,7 @@ if (isset($_POST['apply'])) {
                               <?= $row['salary']; ?>
                          </td>
                          <td class="td-4">
-                              <input type="submit" value="Apply" class="apply" name="apply">
+                              <input type="submit" value="Apply" class="apply" name="apply" id="apply-btn">
                          </td>
                     </tr>
                </form>
