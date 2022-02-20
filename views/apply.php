@@ -8,6 +8,7 @@
           $district = $_POST['district'];
           $resume = $_FILES['cv'];
      }
+     echo $_SESSION['vacancy-id'];
 ?>
 
 <!DOCTYPE html>

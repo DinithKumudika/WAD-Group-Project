@@ -13,26 +13,40 @@ if (isset($_POST['login'])) {
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['pwd']);
 
-    if(empty($username)||empty($password)){
+    if (empty($username) || empty($password)) {
         if (empty($username)) {
             $errors['username'] = "*username is required";
         }
-        else{
+        if (empty($password)) {
             $errors['password'] = "*password is required";
         }
-    }
-    else{ 
-        $username = mysqli_real_escape_string($conn,$username);
+    } else {
+        $username = mysqli_real_escape_string($conn, $username);
         //protect database from harmful sql injections when inserting data to datbase
-        $password = mysqli_real_escape_string($conn,$password);
-        $query = "SELECT `username`,`password` FROM applicant_reg WHERE `username`='{$username}' AND `password`='{$password}'";
-        $result = mysqli_query($conn,$query);
-        if(mysqli_affected_rows($conn)==1){
-            $user_details =mysqli_fetch_assoc($result);
-            $_SESSION['username'] = $user_details['username'];
-            header('Location:home.php');
+        $password = mysqli_real_escape_string($conn, $password);
+        $query1 = "SELECT `username`,`password` FROM applicant_reg WHERE `username`='{$username}' AND `password`='{$password}'";
+        $query2 = "SELECT `username`,`password` FROM `admin` WHERE `username` = '{$username}' AND `password`='{$password}'";
+        $query3 = "SELECT `username`,`password` FROM emp_reg WHERE `username`='{$username}' AND `password`='{$password}'";
+        $result1 = mysqli_query($conn, $query1);
+        $result2 = mysqli_query($conn, $query2);
+        $result3 = mysqli_query($conn, $query3);
+        if ($result1 || $result2 || $result3) {
+            if (mysqli_num_rows($result1)==1) {
+                $user_details = mysqli_fetch_assoc($result1);
+                $_SESSION['username'] = $user_details['username'];
+                header('Location:home.php');
+            } else if (mysqli_num_rows($result2)==1) {
+                $user_details = mysqli_fetch_assoc($result2);
+                $_SESSION['username'] = $user_details['username'];
+                $_SESSION['admin-user'] = 1;
+                header('Location:home.php');
+            } else if(mysqli_num_rows($result3)==1) {
+                $user_details = mysqli_fetch_assoc($result3);
+                $_SESSION['username'] = $user_details['username'];
+                header('Location:home.php');
+            }
         }
-        else{
+        else {
             $wrongCredentials = 'wrong username or password';
         }
     }
@@ -61,7 +75,7 @@ if (isset($_POST['login'])) {
                 </div>
                 <span class="input-field">
                     <input type="text" name="username" id="username" class="input-box" placeholder="Username">
-                    <div class="red"><?=$errors['username']; ?></div>
+                    <div class="red"><?= $errors['username']; ?></div>
                 </span>
             </div>
             <div class="sub-container-1">
@@ -70,7 +84,7 @@ if (isset($_POST['login'])) {
                 </div>
                 <span class="input-field">
                     <input type="password" name="pwd" id="pwd" class="input-box" placeholder="Password">
-                    <div class="red"><?=$errors['password']; ?></div>
+                    <div class="red"><?= $errors['password']; ?></div>
                 </span>
             </div>
             <div class="sub-container-2">
@@ -85,7 +99,7 @@ if (isset($_POST['login'])) {
             </div>
         </div>
     </form>
-    <p class="wrong-cred">wrong username or password</p>
+    <p class="wrong-cred"><?= $wrongCredentials ?></p>
     <script src="../public/js/login.js"></script>
 </body>
 

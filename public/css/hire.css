@@ -4,50 +4,19 @@ body{
      font-family: 'Open Sans', sans-serif;
 }
 
-.btn-container{
-     margin-top: 80px;
-     margin-left: 20px;
+.container{
+     width: 80vw;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 90px;
 }
 
-.add-btn{
-     background-color: rgb(21, 163, 56);
-     color: white;
-     height: 40px;
-     font-size: 20px;
-     border: 1px solid transparent;
-     padding: 5px 10px 5px 10px;
-     border-radius: 10px;
-}
-
-.add-btn:hover{
-     cursor: pointer;
-     background-color: rgb(22, 145, 53);
-}
-
-.bg-modal {
-	background-color: rgba(0, 0, 0, 0.8);
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	display: none;
-	justify-content: center;
-	align-items: center;
-}
-
-.modal-contents {
-	height: auto;
-	width: 80%;
-	background-color: white;
-	text-align: center;
-	padding: 20px;
-	position: relative;
-	border-radius: 5px;
-}
-
-.model-sub-container{
+.sub-container{
      display: flex;
-     flex-direction: column;
+}
+
+.sub-container label{
+     margin: 10px ;
 }
 
 input {
@@ -59,7 +28,7 @@ input {
 
 textarea{
      width: 50%;
-     margin: 15px auto;
+     margin: 10px auto;
 	display: block;
      padding: 8px;
 }

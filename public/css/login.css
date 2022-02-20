@@ -126,5 +126,13 @@ body{
 
 .red{
     color: rgb(255, 10, 10);
-    font-size: 25px;
+    font-size: 20px;
+}
+
+.wrong-cred{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(230, 52, 52);
+    color: white;
+    font-size: 20px;
 }

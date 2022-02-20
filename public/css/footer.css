@@ -1,6 +1,6 @@
 footer{
-     position: sticky;
-     margin-top: 0px;
+     position: static;
+     margin-top: 0vh;
      bottom: 0;
      padding-top: 5px;
      padding-bottom: 5px;

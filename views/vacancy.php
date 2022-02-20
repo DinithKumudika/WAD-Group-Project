@@ -7,12 +7,11 @@ $rows;
 $result = mysqli_query($conn, $query);
 
 if (isset($_POST['apply'])) {
-     $_SESSION['vacancy-id'] = $row['vacancy_id'];
+     $_SESSION['vacancy-id'] = $id;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,7 +51,7 @@ if (isset($_POST['apply'])) {
                               <?= $row['salary']; ?>
                          </td>
                          <td class="td-4">
-                              <input type="submit" value="Apply" class="apply" name="apply" id="apply-btn">
+                              <input type="submit" value="More info" class="apply" name="apply">
                          </td>
                     </tr>
                </form>

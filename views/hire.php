@@ -43,36 +43,36 @@ if(isset($_POST['add-vacancy'])){
      include('header.php');
      ?>
 
-     <div class="btn-container">
+     <!-- <div class="btn-container">
           <button class="add-btn" id="button">
           <i class="fa-solid fa-plus"></i>
                Add Vacancy
           </button>
-     </div>
-     <div class="bg-modal">
-	<div class="modal-contents">
+     </div> -->
+     <!-- <div class="bg-modal">
+	<div class="modal-contents"> -->
 
-		<div class="close">+</div>
-		<img src="https://richardmiddleton.me/comic-100.png" alt="">
+		<!-- <div class="close">+</div> -->
+		<!-- <img src="https://richardmiddleton.me/comic-100.png" alt=""> -->
 
-		<form action="hire.php" method="POST">
-               <div class="model-sub-container">
+		<form action="hire.php" method="POST" class="container">
+               <div class="sub-container">
                     <label for="job-title">Job Title:</label>
                     <input type="text" placeholder="Job Title" name="job-title">
                </div>
-               <div class="model-sub-container">
+               <div class="sub-container">
                     <label for="position">Position:</label>
                     <input type="text" placeholder="Position" name="position">
                </div>
-               <div class="model-sub-container">
+               <div class="sub-container">
                     <label for="salary">Company:</label>
                     <input type="text" placeholder="Company name" name="company">
                </div>
-			<div class="model-sub-container">
+			<div class=sub-container">
                     <label for="salary">Salary:</label>
                     <input type="text" placeholder="Salary" name="salary">
                </div>
-               <div class="model-sub-container">
+               <div class="sub-container">
                     <label for="category">Category:</label>
                     <select name="category" id="job-cat">
                          <option value="deafault" disabled='disabled' selected>Choose job category..</option>
@@ -95,15 +95,15 @@ if(isset($_POST['add-vacancy'])){
                          <option value="Transport,distibution and logistics">Transport,distibution and logistics</option>
                     </select>
                </div>
-               <div class="model-sub-container">
+               <div class="sub-container">
                     <label for="job-description">Description:</label>
                     <textarea name="job-description" cols="100" rows="10" placeholder="Job Description"></textarea>
                </div>
 			<input type="submit" value="Post Vacancy" name="add-vacancy" class="btn">
 		</form>
 
-	</div>
-</div>
+	<!-- </div>
+</div> -->
      <?php
      include('footer.php');
      ?>
