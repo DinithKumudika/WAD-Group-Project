@@ -90,7 +90,7 @@
         header('Location: login.php');
       } 
       else {
-        $mail_notification['failure'] = 'Email cannot be sent';
+        $mail_notification['failed'] = 'Email cannot be sent';
       }
     }
   }
@@ -148,7 +148,7 @@
     </form>
     <div>
       <p class="email-green email-notify"><?=$mail_notification['successfull'];?></p>
-      <p class="email-red email-notify"><?=$mail_notification['failure'];?></p>
+      <p class="email-red email-notify"><?=$mail_notification['failed'];?></p>
     </div>
     <script>
         

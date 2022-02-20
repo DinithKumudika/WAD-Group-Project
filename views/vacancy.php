@@ -2,16 +2,14 @@
 session_start();
 include('../db/db_connect.php');
 $query = "SELECT * FROM vacancy";
-$i = 0;
+$id = array();
 $rows;
 $result = mysqli_query($conn, $query);
 
-if (isset($_POST['apply'])) {
-     $_SESSION['vacancy-id'] = $id;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,30 +35,48 @@ if (isset($_POST['apply'])) {
                </tr>
           </thead>
 
-          <?php while($row = mysqli_fetch_array($result)) { ?>
-               <form action="vacancy.php" method="post">
-                    <?php $id = $row['vacancy_id'] ?>
-                    <tr>
-                         <td class="td-1">
-                              <?= $row['position']; ?>
-                         </td>
-                         <td class="td-2">
-                              <?= $row['company']; ?>
-                         </td>
-                         <td class="td-3">
-                              <?= $row['salary']; ?>
-                         </td>
-                         <td class="td-4">
-                              <input type="submit" value="More info" class="apply" name="apply">
-                         </td>
-                    </tr>
-               </form>
+          <?php while ($row = mysqli_fetch_array($result)) { ?>
+               <tr>
+                    <td class="td-1">
+                         <?= $row['position']; ?>
+                    </td>
+                    <td class="td-2">
+                         <?= $row['company']; ?>
+                    </td>
+                    <td class="td-3">
+                         <?= $row['salary']; ?>
+                    </td>
+                    <td class="td-4">
+                         <div class="btn-container">
+                              <button class="add-btn more-info">
+                                   More info
+                              </button>
+                         </div>
+                    </td>
+               </tr>
+               <div class="bg-modal">
+                    <div class="modal-contents">
+                         <div class="model-sub-container">
+                              <h1><?= $row['job_title']; ?></h1>
+                              <h2>Position-:<?= $row['position']; ?></h2>
+                              <h2>Company name-:<?= $row['company']; ?></h2>
+                              <h2>Job category-:<?=$row['category'];?></h2>
+                              <h2>Salary-:<?=$row['salary'];?></h2>
+                              <div class="description">
+                                   <p><?=$row['description'];?></p>
+                              </div>
+                         </div>
+                         <div class="close">+</div>
+                         <form action="" method="POST">
+                              <input type="submit" value="Apply for job" name="apply" class="btn">
+                         </form>
+                    </div>
+               </div>
           <?php } ?>
      </table>
      <?php
-     include('footer.php');
+     //include('footer.php');
      ?>
      <script src="../public/js/vacancy.js"></script>
 </body>
-
 </html>

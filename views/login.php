@@ -33,16 +33,15 @@ if (isset($_POST['login'])) {
         if ($result1 || $result2 || $result3) {
             if (mysqli_num_rows($result1)==1) {
                 $user_details = mysqli_fetch_assoc($result1);
-                $_SESSION['username'] = $user_details['username'];
+                $_SESSION['user_applicant'] = $user_details['username'];
                 header('Location:home.php');
             } else if (mysqli_num_rows($result2)==1) {
                 $user_details = mysqli_fetch_assoc($result2);
-                $_SESSION['username'] = $user_details['username'];
-                $_SESSION['admin-user'] = 1;
+                $_SESSION['user_admin'] = $user_details['username'];
                 header('Location:home.php');
             } else if(mysqli_num_rows($result3)==1) {
                 $user_details = mysqli_fetch_assoc($result3);
-                $_SESSION['username'] = $user_details['username'];
+                $_SESSION['user_emp'] = $user_details['username'];
                 header('Location:home.php');
             }
         }

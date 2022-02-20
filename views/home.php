@@ -1,3 +1,40 @@
+<?php
+  session_start();
+
+  $reg_section = '<div class="container">
+    <div class="container-1" id="con-1">
+      <form action="../Modules/Auth.php" method="post">
+        <h1 class="reg-title">Company Registration</h1>
+        <p>Searching for best employes for your company? <br> Register today to find best skills for you</P>
+        <a href="./emp_signup.php"><input type="button" class="btn" value="Register"></a>
+      </form>
+    </div>
+    <div>
+      <form action="../Modules/Auth.php" method="post">
+        <div class="container-2" id="con-2">
+          <h1 class="reg-title">Candidate Registration</h1>
+          <p>Looking for the job that suits you most? <br> Register and start searching!</p>
+          <a href="./regular_signup.php"><input type="button" class="btn" value="Register"></a>
+        </div>
+      </form>
+    </div>
+  </div>';
+
+  $reg_now = 
+  '<a href="#registration">
+  <div>
+    <h2 class="reg-now">Register Now</h2>
+    <span class="material-icons down-arrow">
+      keyboard_double_arrow_down
+    </span>
+  </div>
+</a>';
+
+  if(isset($_SESSION['user_applicant']) || isset($_SESSION['user_admin']) || isset($_SESSION['user_emp'])){
+    $reg_section="";
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,34 +56,11 @@
   ?>
   <div class="bg-container">
     <h1 class="heading" id=head>One Step To Your Future Starts Here</h1>
-    <a href="#registration">
-      <div>
-        <h2 class="reg-now">Register Now</h2>
-        <span class="material-icons down-arrow">
-          keyboard_double_arrow_down
-        </span>
-      </div>
-    </a>
+    <?=$reg_now;?>
     <!--<i class="fa-solid fa-angles-down"></i>-->
   </div>
-  <div class="container">
-    <div class="container-1" id="con-1">
-      <form action="../Modules/Auth.php" method="post">
-        <h1 class="reg-title">Company Registration</h1>
-        <p>Searching for best employes for your company? <br> Register today to find best skills for you</P>
-        <a href="signup.php"><input type="button" class="btn" value="Register"></a>
-      </form>
-    </div>
-    <div>
-      <form action="../Modules/Auth.php" method="post">
-        <div class="container-2" id="con-2">
-          <h1 class="reg-title">Candidate Registration</h1>
-          <p>Looking for the job that suits you most? <br> Register and start searching!</p>
-          <a href="signup.php"><input type="button" class="btn" value="Register"></a>
-        </div>
-      </form>
-    </div>
-  </div>
+  
+  <?=$reg_section;?>
 
   <div class="container-3">
     <div>

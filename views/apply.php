@@ -1,4 +1,5 @@
 <?php
+     include('../db/db_connect.php');
      if(isset($_POST['apply'])){
           $full_name = $_POST['full-name'];
           $address_line1 = $_POST['address-1'];
@@ -9,6 +10,9 @@
           $resume = $_FILES['cv'];
      }
      echo $_SESSION['vacancy-id'];
+     if(isset($_SESSION['vacancy_id'])){
+          $query = "SELECT * FROM `vacancy` WHERE vacancy_id='{$_SESSION['vacancy_id']}'";
+     }
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +52,7 @@
                     <div class="model-sub-container">
                          <label for="job-title">Full Name:</label>
                          <input type="text" placeholder="Full name" name="full-name">
-                         <p class="err">*this field required</p>
+                         <p class="err">*this field is required</p>
                     </div>
                     <div class="model-sub-container">
                          <label for="position">Address:</label>
@@ -60,17 +64,17 @@
                                    <input type="text" placeholder="Address line 2" name="position" class="address-2" name="address-2">
                               </div>
                          </div>
-                         <p class="err">*this fields required</p>
+                         <p class="err">*this field is required</p>
                     </div>
                     <div class="model-sub-container">
                          <label for="salary">Phone no:</label>
                          <input type="text" placeholder="Phone no" name="phone-no">
-                         <p class="err">*this field required</p>
+                         <p class="err">*this field is required</p>
                     </div>
                     <div class="model-sub-container">
                          <label for="nic">NIC:</label>
                          <input type="text" placeholder="NIC" name="nic">
-                         <p class="err">*this field required</p>
+                         <p class="err">*this field is required</p>
                     </div>
                     <div class="model-sub-container">
                          <label for="district">District:</label>
@@ -103,7 +107,7 @@
                               <option value="Trincomalee">Trincomalee</option>
                               <option value="Vavuniya">Vavuniya</option>
                          </select>
-                         <p class="err">*this field required</p>
+                         <p class="err">*this field is required</p>
                     </div>
                     <div class="model-sub-container" class="cv-upload">
                          <label for="cv">Upload Resume:</label>
@@ -112,7 +116,7 @@
                               <button id="cv-btn" type="button">Upload resume</button>
                               <span id="cv-text">No file chosen...</span>
                          </div>
-                         <p class="err">*this field required</p>
+                         <p class="err">*this field is required</p>
                     </div>
                     <input type="submit" value="Apply for job" name="apply" class="btn">
                </form>
