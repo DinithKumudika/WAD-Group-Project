@@ -42,8 +42,45 @@ table thead tr th{
      margin-left: 10px;
 }
 
-.apply:hover{
+.delete{
+     padding: 8px 20px;
+     background-color: rgb(153, 31, 31);
+     /* color: white; */
+     font-size: 20px;
+     border: 1px solid transparent;
+     font-weight: bold;
+     margin-left: auto;
+     margin-right: auto;
+     margin-left: 10px;
+}
+
+.edit{
+     padding: 8px 20px;
+     background-color: rgb(31, 53, 153);
+     /* color: white; */
+     font-size: 20px;
+     border: 1px solid transparent;
+     font-weight: bold;
+     margin-left: auto;
+     margin-right: auto;
+     margin-left: 10px;
+}
+.apply:hover, .edit:hover{
      cursor: pointer;
+}
+
+.delete:hover{
+     cursor: pointer;
+}
+
+.line1{
+     color:white;
+     text-decoration: none;
+}
+
+.line2{
+     color: white;
+     text-decoration: none;
 }
 
 .btn-container{

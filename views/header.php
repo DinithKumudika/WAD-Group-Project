@@ -23,7 +23,7 @@
 
     }
     else if(isset($_SESSION['user_admin'])){
-        $admin = '<li><a href="#">Admin</a></li>';
+        $admin = '<li><a href="admin.php">Admin</a></li>';
         $login_display = $_SESSION['user_admin'];
     }
     else if(isset($_SESSION['user_emp'])){
