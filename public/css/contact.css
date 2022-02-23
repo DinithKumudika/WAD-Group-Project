@@ -2,7 +2,7 @@
 
 body {
   background-image: url('../assets/images/contact-us-bg.jpg');
-  background-size: 100% 100%;
+  background-size: 100% 110%;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
@@ -28,7 +28,7 @@ body {
   flex-wrap: wrap;
 }
 
-form {
+.container form {
   margin-top: 0px;
   margin-left: 20px;
   padding: 20px 10px 20px 10px;
@@ -37,7 +37,7 @@ form {
   margin-bottom: 100px;
 }
 
-form div {
+.container form div {
   display: block;
 }
 
@@ -79,7 +79,7 @@ label {
   transform: scale(1.05);
 }
 
-form div:last-child {
+.container form div:last-child {
   margin-top: 5px;
 }
 

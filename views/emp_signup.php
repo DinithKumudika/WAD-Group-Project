@@ -65,39 +65,40 @@
       }
     }
     else{
-      $verificationCode = sha1($email . time());
-      $query2 = "INSERT INTO emp_reg(`first_name`,`last_name`,`email`,`phone_no`,`company`,`username`,`password`,`verification_code`,`is_active`)
-                VALUES
-                ('{$firstName}','{$lastName}','{$email}','{$phoneNo}','{$company}','{$username}','{$password}','{$verificationCode}','false');
-              ";
-      $result2 = mysqli_query($conn,$query);
-
-      $verificationURL = 'http://localhost/WAD/models/verification.php?verification_code=' . $verificationCode;
-
-      $to = $email;
-      $sender = 'hiremelkofficial@gmail.com';
-      $subject = 'Verify your account on hire me!';
-      $body = '<h3>Dear ' . $fullName . ',</h3>
-        <br>
-        <p>Thank you for joining with us. Please click the below link to verify your email address to activate the account</p>
-        <br>
-        <p>'.$verificationURL.'</p>
-        <p>Thank you,
-        <br>
-        HireMe.lk
-        </p>
-      ';
-      $header = "From: {$sender}\r\n
-                Content-Type: text/html\r\n";
-
-      $mail_sent = mail($to, $subject,$body, $header);
-      if ($mail_sent) {
-        $mail_notification['successfull'] = 'Email sent, check your emails';
-        header('Location: login.php');
-      } 
-      else {
-        $mail_notification['failed'] = 'Email cannot be sent';
-      }
+        $verificationCode = sha1($email . time());
+        $query2 = "INSERT INTO emp_reg(`first_name`,`last_name`,`email`,`phone_no`,`company`,`username`,`password`,`verification_code`,`is_active`)
+                  VALUES
+                  ('{$firstName}','{$lastName}','{$email}','{$phoneNo}','{$company}','{$username}','{$password}','{$verificationCode}','false');
+                ";
+        $result2 = mysqli_query($conn,$query2);
+        if($result2){
+          $verificationURL = 'http://localhost/WAD/models/verification.php?verification_code=' . $verificationCode;
+  
+            $to = $email;
+            $sender = 'hiremelkofficial@gmail.com';
+            $subject = 'Verify your account on hire me!';
+            $body = '<h3>Dear ' . $fullName . ',</h3>
+              <br>
+              <p>Thank you for joining with us. Please click the below link to verify your email address to activate the account</p>
+              <br>
+              <p>'.$verificationURL.'</p>
+              <p>Thank you,
+              <br>
+              HireMe.lk
+              </p>
+            ';
+            $header = "From: {$sender}\r\n
+                      Content-Type: text/html\r\n";
+      
+            $mail_sent = mail($to, $subject,$body, $header);
+            if ($mail_sent) {
+              $mail_notification['successfull'] = 'Email sent, check your emails';
+              header('Location: login.php');
+            } 
+            else {
+              $mail_notification['failed'] = 'Email cannot be sent';
+            }
+        }
     }
   }
 ?>

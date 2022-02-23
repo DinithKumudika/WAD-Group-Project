@@ -7,15 +7,15 @@
   $disabled = '';
   $logout = '';
   $admin = '';
-  $emp = '';
-  $applicant = '';
+  $hiring = '';
+  $vacancy = '';
+  
   //checking session variables to determine user
-
-  if(isset($_SESSION['user_applicant']) || isset($_SESSION['user_admin']) || isset($_SESSION['user_emp'])){
-    if($_SESSION['user_applicant']=="ucsc" || $_SESSION['user_emp']=="ucsc"){
-      $emp = '<li><a href="./hire.php">Hire</a></li>';
-      $login_display = $_SESSION['user_applicant'];
-      $applicant = '<li><a href="./vacancy.php">Vacancies</a></li>';
+  if(isset($_SESSION['user_applicant']) || isset($_SESSION['user_admin']) || isset($_SESSION['user_emp']) ||isset($_SESSION['default_user'])){
+    if(isset($_SESSION['default_user'])){
+      $hiring = '<li><a href="./hire.php">Hire</a></li>';
+      $login_display = $_SESSION['default_user'];
+      $vacancy = '<li><a href="./vacancy.php">Vacancies</a></li>';
     }
     else if(isset($_SESSION['user_applicant'])){
       $login_display = $_SESSION['user_applicant'];
@@ -24,7 +24,9 @@
     }
     else if(isset($_SESSION['user_admin'])){
         $admin = '<li><a href="#">Admin</a></li>';
+        $hiring = '<li><a href="./hire.php">Hire</a></li>';
         $login_display = $_SESSION['user_admin'];
+        $vacancy = '<li><a href="./vacancy.php">Vacancies</a></li>';   
     }
     else if(isset($_SESSION['user_emp'])){
       $login_display = $_SESSION['user_applicant'];
@@ -52,8 +54,8 @@
     <div class="logo-container"><img src="../public/assets/images/logo.png" alt="" class="logo"></div>
     <ul id="nav-list">
         <li><a href="./home.php">Home</a></li>
-        <?=$applicant;?>
-        <?=$emp;?>
+        <?=$vacancy;?>
+        <?=$hiring;?>
         <?=$admin;?>
         <li><a href="./contact.php">Contact Us</a></li>
         <li><a href="./facilities.php">Facilities</a></li>

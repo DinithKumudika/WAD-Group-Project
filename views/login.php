@@ -24,24 +24,35 @@ if (isset($_POST['login'])) {
         $username = mysqli_real_escape_string($conn, $username);
         //protect database from harmful sql injections when inserting data to datbase
         $password = mysqli_real_escape_string($conn, $password);
-        $query1 = "SELECT `username`,`password` FROM applicant_reg WHERE `username`='{$username}' AND `password`='{$password}'";
+        $query1 = "SELECT `applicant_ID`,`username`,`password` FROM applicant_reg WHERE `username`='{$username}' AND `password`='{$password}'";
         $query2 = "SELECT `username`,`password` FROM `admin` WHERE `username` = '{$username}' AND `password`='{$password}'";
-        $query3 = "SELECT `username`,`password` FROM emp_reg WHERE `username`='{$username}' AND `password`='{$password}'";
+        $query3 = "SELECT `emp_id`,`username`,`password` FROM emp_reg WHERE `username`='{$username}' AND `password`='{$password}'";
         $result1 = mysqli_query($conn, $query1);
         $result2 = mysqli_query($conn, $query2);
         $result3 = mysqli_query($conn, $query3);
+
         if ($result1 || $result2 || $result3) {
-            if (mysqli_num_rows($result1)==1) {
+            if(mysqli_num_rows($result1)==1 && mysqli_num_rows($result3)==1){
+                $user_details = mysqli_fetch_assoc($result1);
+                $_SESSION['default_user'] = $user_details['username'];
+                $_SESSION['user_id'] = $user_details['applicant_ID'];
+                header('Location:home.php');
+
+            }
+            else if (mysqli_num_rows($result1)==1) {
                 $user_details = mysqli_fetch_assoc($result1);
                 $_SESSION['user_applicant'] = $user_details['username'];
+                $_SESSION['user_id'] = $user_details['applicant_ID'];
                 header('Location:home.php');
-            } else if (mysqli_num_rows($result2)==1) {
+            }
+             else if (mysqli_num_rows($result2)==1) {
                 $user_details = mysqli_fetch_assoc($result2);
                 $_SESSION['user_admin'] = $user_details['username'];
                 header('Location:home.php');
             } else if(mysqli_num_rows($result3)==1) {
                 $user_details = mysqli_fetch_assoc($result3);
                 $_SESSION['user_emp'] = $user_details['username'];
+                $_SESSION['user_id'] = $user_details['emp_id'];
                 header('Location:home.php');
             }
         }

@@ -67,9 +67,9 @@ $result = mysqli_query($conn, $query);
                               </div>
                          </div>
                          <div class="close">+</div>
-                         <form action="" method="POST">
-                              <input type="submit" value="Apply for job" name="apply" class="btn">
-                         </form>
+                         <button>
+                              <a href="./apply.php?user_id='.<?=$row['vacancy_id']?>.'">Apply</a>
+                         </button>
                     </div>
                </div>
           <?php } ?>

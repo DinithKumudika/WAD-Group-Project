@@ -6,16 +6,19 @@ function ValidateUser($conn)
   if (isset($_GET['verification_code'])) {
     $verification_code = mysqli_real_escape_string($conn, $_GET['verification_code']);
 
-    $query = "SELECT * FROM users_jobseekers WHERE verification_code = '{$verification_code}'";
-    $result = mysqli_query($conn, $query);
+    $query1 = "SELECT * FROM applicant_reg WHERE verification_code = '{$verification_code}'";
+    $query2 = "SELECT * FROM emp_reg WHERE verification_code = '{$verification_code}'";
+    $result1 = mysqli_query($conn, $query1);
+    $result2 = mysqli_query($conn, $query2);
 
-    if (mysqli_num_rows($result) == 1) {
-      $query2 = "UPDATE users_jobseekers 
-        SET is_active = 'true', verification_code = NULL 
+    if ($result1 && mysqli_num_rows($result1) == 1) {
+      $updateQuery = "UPDATE applicant_reg
+        SET is_active = 1, verification_code = NULL 
         WHERE verification_code = '{$verification_code}'";
-      $result2 = mysqli_query($conn, $query2);
-      if($result2){
-        if (mysqli_affected_rows($conn) == 1) {
+
+        $result3 = mysqli_query($conn,$updateQuery);
+      
+        if ($result3 && mysqli_affected_rows($conn) == 1) {
           echo
           '<script type="text/javascript">
              alert("Email address being verified");   
@@ -27,7 +30,26 @@ function ValidateUser($conn)
              alert("Email is not verified");
           </script>';
         }
-      }
+    }
+    else if($result2 && mysqli_num_rows($result2)==1){
+      $updateQuery = "UPDATE emp_reg
+        SET is_active = 1, verification_code = NULL 
+        WHERE verification_code = '{$verification_code}'";
+
+        $result3 = mysqli_query($conn,$updateQuery);
+      
+        if ($result3 && mysqli_affected_rows($conn) == 1) {
+          echo
+          '<script type="text/javascript">
+             alert("Email address being verified");   
+          </script>';
+          header('Location:login.php');
+        } else {
+          echo
+          '<script type="text/javascript">
+             alert("Email is not verified");
+          </script>';
+        }
     }
   }
 }
