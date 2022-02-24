@@ -105,7 +105,7 @@ if (isset($_POST['login'])) {
             </div>
             <input type="submit" value="Log In" class="login-btn" name="login">
             <div class="sub-container-3">
-                <p>Not a member? <a href="signup.php">Sign Up</a></p>
+                <p>Not a member? <a href="regular_signup.php">Sign Up</a></p>
             </div>
         </div>
     </form>

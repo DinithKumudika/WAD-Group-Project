@@ -48,30 +48,12 @@ $result = mysqli_query($conn, $query);
                     </td>
                     <td class="td-4">
                          <div class="btn-container">
-                              <button class="add-btn more-info">
-                                   More info
-                              </button>
+                              <?php echo '<a href="./apply.php?vacancy_id='.$row['vacancy_id'].'">';?>
+                              <button class="add-btn more-info">Apply </button>
+                              </a>
                          </div>
                     </td>
                </tr>
-               <div class="bg-modal">
-                    <div class="modal-contents">
-                         <div class="model-sub-container">
-                              <h1><?= $row['job_title']; ?></h1>
-                              <h2>Position-:<?= $row['position']; ?></h2>
-                              <h2>Company name-:<?= $row['company']; ?></h2>
-                              <h2>Job category-:<?=$row['category'];?></h2>
-                              <h2>Salary-:<?=$row['salary'];?></h2>
-                              <div class="description">
-                                   <p><?=$row['description'];?></p>
-                              </div>
-                         </div>
-                         <div class="close">+</div>
-                         <button>
-                              <a href="./apply.php?user_id='.<?=$row['vacancy_id']?>.'">Apply</a>
-                         </button>
-                    </div>
-               </div>
           <?php } ?>
      </table>
      <?php
