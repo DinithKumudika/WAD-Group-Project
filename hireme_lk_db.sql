@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2022 at 08:33 PM
+-- Generation Time: Feb 24, 2022 at 11:55 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -88,6 +88,21 @@ CREATE TABLE `applications` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `contact_id` int(11) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `mail_subject` varchar(255) NOT NULL,
+  `message` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `emp_reg`
 --
 
@@ -124,18 +139,17 @@ CREATE TABLE `vacancy` (
   `company` varchar(100) NOT NULL,
   `salary` varchar(100) NOT NULL,
   `category` varchar(255) NOT NULL,
-  `description` longtext NOT NULL,
-  `emp_id` int(11) NOT NULL
+  `description` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `vacancy`
 --
 
-INSERT INTO `vacancy` (`vacancy_id`, `job_title`, `position`, `company`, `salary`, `category`, `description`, `emp_id`) VALUES
-(2, 'Post of Assistant Accountant', 'Assistant Accountant', 'Tea Tang (Pvt) Ltd', 'Rs.85,000', 'Financial', 'We are looking for a dynamic, self-motivated and resourceful individual to fill the above vacany in our finance department. \r\n  The ideal candidate should possess the following prerequisites\r\n- Completed business level 1 and 2 of ICA-SL. A degree from a recognized university will be an \r\n  added advantage.\r\n- 3-5 years of working experience. \r\n- A good command of the english language.\r\n- Good interpersonal skills', 0),
-(3, 'Call Center Executive', 'Call Center Executive', 'Pansy Holdings (Pvt) Ltd', 'Rs.45,000', 'Retail and customer Services', 'About the role\r\nWe are looking for a full time customer Care executive for a Pansy.lk Located in Rajagiriya\r\n\r\nAge - 18-28\r\n\r\nOnly Female\r\n\r\nGCE Passed\r\n\r\nSinhala / Tamil languages required\r\n\r\n English language will be advantage\r\n\r\nAttractive Salary &amp; Commission\r\n\r\nApllication Deadline : 2022/04/07', 0),
-(4, 'Marketing Executive - Full Time', 'Marketing Executive', 'WWS Roofing Products (Pvt) Ltd', 'Rs.75,000', 'Administration,business and management', 'We are a Group Of Company which consists of one of the leading manufacturing company in Roofing Products Industry &amp; with leading Construction Company from Steel &amp; Civil construction field. So we are looking for a young energetic female candidate to fulfil the above job vacancies in our Company.\r\n\r\n•	Gender -  Female\r\n\r\n•	Age – Below 25 years\r\n\r\n•	Should pass GCE A Levels\r\n\r\n•	Should have a keen knowledge from MS Word &amp; Excel\r\n\r\n•	1-2 years’ experience from Manufacturing &amp; Construction related company will be an added advantage.\r\n\r\n•	FRESHERS With good Understanding also welcomed.\r\n\r\n•	Salary Negotiable\r\n\r\n•	Applicants from Biyagama Area &amp; Boarding freshers’s also welcomed.', 0);
+INSERT INTO `vacancy` (`vacancy_id`, `job_title`, `position`, `company`, `salary`, `category`, `description`) VALUES
+(1, 'Post of Assistant Accountant', 'Assistant Accountant', 'Tea Tang (Pvt) Ltd', 'Rs.85,000', 'Financial', 'We are looking for a dynamic, self-motivated and resourceful individual to fill the above vacany in our finance department. \n  The ideal candidate should possess the following prerequisites\n- Completed business level 1 and 2 of ICA-SL. A degree from a recognized university will be an \n  added advantage.\n- 3-5 years of working experience. \n- A good command of the english language.\n- Good interpersonal skills'),
+(2, 'Call Center Executive', 'Call Center Executive', 'Pansy Holdings (Pvt) Ltd', 'Rs.45,000', 'Retail and customer Services', 'About the role\r\nWe are looking for a full time customer Care executive for a Pansy.lk Located in Rajagiriya\r\n\r\nAge - 18-28\r\n\r\nOnly Female\r\n\r\nGCE Passed\r\n\r\nSinhala / Tamil languages required\r\n\r\n English language will be advantage\r\n\r\nAttractive Salary &amp; Commission\r\n\r\nApllication Deadline : 2022/04/07'),
+(3, 'Marketing Executive - Full Time', 'Marketing Executive', 'WWS Roofing Products (Pvt) Ltd', 'Rs.75,000', 'Administration,business and management', 'We are a Group Of Company which consists of one of the leading manufacturing company in Roofing Products Industry &amp; with leading Construction Company from Steel &amp; Civil construction field. So we are looking for a young energetic female candidate to fulfil the above job vacancies in our Company.\r\n\r\n•	Gender -  Female\r\n\r\n•	Age – Below 25 years\r\n\r\n•	Should pass GCE A Levels\r\n\r\n•	Should have a keen knowledge from MS Word &amp; Excel\r\n\r\n•	1-2 years’ experience from Manufacturing &amp; Construction related company will be an added advantage.\r\n\r\n•	FRESHERS With good Understanding also welcomed.\r\n\r\n•	Salary Negotiable\r\n\r\n•	Applicants from Biyagama Area &amp; Boarding freshers’s also welcomed.');
 
 --
 -- Indexes for dumped tables
@@ -160,6 +174,12 @@ ALTER TABLE `applications`
   ADD PRIMARY KEY (`application_id`),
   ADD KEY `applicant_ID` (`applicant_ID`),
   ADD KEY `vacancy_id` (`vacancy_id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`contact_id`);
 
 --
 -- Indexes for table `emp_reg`
@@ -196,6 +216,12 @@ ALTER TABLE `applications`
   MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `emp_reg`
 --
 ALTER TABLE `emp_reg`
@@ -205,7 +231,7 @@ ALTER TABLE `emp_reg`
 -- AUTO_INCREMENT for table `vacancy`
 --
 ALTER TABLE `vacancy`
-  MODIFY `vacancy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `vacancy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
