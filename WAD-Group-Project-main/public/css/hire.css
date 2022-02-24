@@ -1,0 +1,79 @@
+body{
+     margin: 0;
+     padding: 0;
+     font-family: 'Open Sans', sans-serif;
+}
+
+.container{
+     width: 80vw;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 90px;
+}
+
+.sub-container{
+     display: flex;
+}
+
+.sub-container label{
+     margin: 10px ;
+}
+
+input {
+	margin: 10px auto;
+	display: block;
+	width: 50%;
+	padding: 8px;
+}
+
+textarea{
+     width: 50%;
+     margin: 10px auto;
+	display: block;
+     padding: 8px;
+}
+
+select{
+     width: 51%;
+     display: block;
+     margin: 15px auto;
+     padding: 8px;
+     background-color: white;
+     border: 1px solid black;
+}
+
+option:hover{
+     background-color: rgb(31, 141, 251);
+}
+
+.btn{
+     background-color: rgb(21, 163, 56);
+     border: 2px solid transparent;
+     color: white;
+     font-size: 15px;
+     font-weight: bold;
+     width: 30%;
+}
+
+.btn:hover{
+     cursor: pointer;
+}
+
+.close {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	font-size: 42px;
+	color: #333;
+	transform: rotate(45deg);
+	cursor: pointer;
+}
+
+.close:hover{
+     color: #666;
+}
+
+.err-text{
+     font-size: 15px;
+     color: rgb(189, 49, 49);
+}

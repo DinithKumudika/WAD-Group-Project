@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=McLaren&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Roboto+Condensed:wght@700&family=Roboto:wght@100;400&family=Yanone+Kaffeesatz:wght@300;400;500;600&family=Zen+Kurenaido&display=swap");
+
+body {
+  background-image: url('../assets/images/contact-us-bg.jpg');
+  background-size: 100% 110%;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+}
+
+.title {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 50px;
+  margin: 100px auto 0px auto;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.title-container {
+  position: relative;
+  height: auto;
+}
+
+.container{
+  margin-top: 42px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container form {
+  margin-top: 0px;
+  margin-left: 20px;
+  padding: 20px 10px 20px 10px;
+  width: 600px;
+  border-radius: 10px;
+  margin-bottom: 100px;
+}
+
+.container form div {
+  display: block;
+}
+
+label {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+.input-box {
+  font-family: "Open Sans", sans-serif;
+  height: 30px;
+  padding: 0px 0px 0px 10px;
+  outline: 1px solid black;
+  border: 2px solid transparent;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 60%;
+}
+
+.input-box:focus {
+  border: 2px solid black;
+  outline: none;
+  transform: scale(1.05);
+}
+
+.message {
+  padding: 10px 0px 0px 10px;
+  outline: 1px solid black;
+  border: 2px solid transparent;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+.message:focus {
+  border: 2px solid black;
+  outline: none;
+  transform: scale(1.05);
+}
+
+.container form div:last-child {
+  margin-top: 5px;
+}
+
+.btn {
+  height: 40px;
+  width: 90%;
+  border: 0px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+  background-color: rgb(21, 146, 63);
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(22, 122, 55);
+}
+
+.contact-container{
+     margin: 0px auto 0px auto;
+}
+
+.contact-media{
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+}
+
+.contact-media div{
+     display: flex;
+     flex-direction: row;
+     margin: 10px 0px 10px 0px;
+}
+
+.contact-media div p{
+     margin-top: 10px;
+     margin-left: 20px;
+     color: white;
+     font-weight: bold;
+}
+
+.fa-brands, .fa-solid{
+     font-size: 40px;
+     color: white;
+}
+
+.fa-brands:hover, .fa-solid:hover{
+     cursor: pointer;
+}
+
+.fa-facebook,.fa-twitter, .fa-linkedin, .fa-phone, .fa-whatsapp-square{
+     transition-duration: 0.2s;
+     transition-timing-function: ease-in;
+}
+
+.fa-facebook:hover{
+     color: #0A82ED;
+}
+
+.fa-twitter:hover{
+     color: #1D9BF0;
+}
+
+.fa-linkedin:hover{
+     color: #0A66C2;
+}
+
+.fa-whatsapp-square:hover{
+     color: #35BB65;
+}
+
+.fa-phone:hover{
+     color: rgb(33, 175, 44);
+}
+
+.red{
+  background-color: rgb(224, 49, 49);
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.green{
+  background-color: rgb(37, 172, 37);
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+@media screen and (max-width: 860px) {
+  form {
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding: 20px 10px 20px 20px;
+    width: 50vw;
+    border-radius: 10px;
+  }
+
+  .btn{
+     margin-left: auto;
+     margin-right: auto;
+  }
+
+  .btn:last-child {
+    margin-top: 10px;
+  }
+}

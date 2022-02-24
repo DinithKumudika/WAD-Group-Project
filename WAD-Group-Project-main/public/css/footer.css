@@ -1,0 +1,16 @@
+footer{
+     position: static;
+     margin-top: 0vh;
+     bottom: 0;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     background-color: white;
+     opacity: 0.5;
+     width: 100%;
+}
+
+footer p{
+     font-family: 'Open Sans', sans-serif;
+     font-weight: bold;
+     text-align: center;
+}
