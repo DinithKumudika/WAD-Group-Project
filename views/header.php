@@ -1,5 +1,4 @@
 <?php
-  session_start();
   include('../db/db_connect.php');
 
   $login_display = '';
@@ -23,7 +22,7 @@
 
     }
     else if(isset($_SESSION['user_admin'])){
-        $admin = '<li><a href="#">Admin</a></li>';
+        $admin = '<li><a href="view_users.php">Admin</a></li>';
         $hiring = '<li><a href="./hire.php">Hire</a></li>';
         $login_display = $_SESSION['user_admin'];
         $vacancy = '<li><a href="./vacancy.php">Vacancies</a></li>';   

@@ -29,11 +29,6 @@ if (isset($_POST['signup'])) {
   $password = mysqli_real_escape_string($conn, htmlspecialchars($_POST['password']));
   $fullName = $firstName . ' ' . $lastName;
 
-  //checking if the user already exists or not
-  $query1 = "SELECT `username` FROM applicant_reg WHERE `username`='$username' LIMIT 1";
-  $result1 = mysqli_query($conn, $query1);
-
-
   //checking for empty fields
   if (empty($firstname) || empty($lastName) || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($gender) || empty($phoneNo) || empty($company) || empty($username) || empty($password)) {
     if (empty($firstName)) {
@@ -63,42 +58,21 @@ if (isset($_POST['signup'])) {
     if (empty($password)) {
       $errors['password'] = "*Password is required";
     }
-  } else if (mysqli_num_rows($result1)) {
-    $errors['dup_username'] = "This username is already taken";
   } else {
-    //inserting data to db and sending verification email
-    $verificationCode = sha1($email . time());
-    $query2 = "INSERT INTO emp_reg(`first_name`,`last_name`,`email`,`phone_no`,`company`,`username`,`password`,`verification_code`,`is_active`)
+    //checking if the user already exists or not
+    $query1 = "SELECT `username` FROM applicant_reg WHERE `username`='$username' LIMIT 1";
+    $result1 = mysqli_query($conn, $query1);
+    if (mysqli_num_rows($result1) == 1) {
+      echo "<script>
+      alert('Username is already taken');
+      </script>";
+    } else {
+      //inserting data to db
+      $query2 = "INSERT INTO emp_reg(`first_name`,`last_name`,`email`,`phone_no`,`company`,`username`,`password`)
                   VALUES
-                  ('{$firstName}','{$lastName}','{$email}','{$phoneNo}','{$company}','{$username}','{$password}','{$verificationCode}','false');
+                  ('{$firstName}','{$lastName}','{$email}','{$phoneNo}','{$company}','{$username}','{$password}');
                 ";
-    $result2 = mysqli_query($conn, $query2);
-    if ($result2) {
-      $verificationURL = 'http://localhost/WAD/models/verification.php?verification_code=' . $verificationCode;
-
-      $to = $email;
-      $sender = 'hiremelkofficial@gmail.com';
-      $subject = 'Verify your account on hire me!';
-      $body = '<h3>Dear ' . $fullName . ',</h3>
-              <br>
-              <p>Thank you for joining with us. Please click the below link to verify your email address to activate the account</p>
-              <br>
-              <p>' . $verificationURL . '</p>
-              <p>Thank you,
-              <br>
-              HireMe.lk
-              </p>
-            ';
-      $header = "From: {$sender}\r\n
-                      Content-Type: text/html\r\n";
-
-      $mail_sent = mail($to, $subject, $body, $header);
-      if ($mail_sent) {
-        $mail_notification['successfull'] = 'Email sent, check your emails';
-        header('Location: login.php');
-      } else {
-        $mail_notification['failed'] = 'Email cannot be sent';
-      }
+      $result2 = mysqli_query($conn, $query2);
     }
   }
 }

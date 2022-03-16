@@ -76,7 +76,7 @@ nav ul li a:hover:before {
 }
 
 .login-btn{
-  margin-top: -5px;
+  margin-top: -10px;
   margin-left: 10px;
   background:none;
   border-radius: 10px;
@@ -96,6 +96,7 @@ nav ul li a:hover:before {
 }
 
 .logout{
+  width: 100px;
   margin-top: -5px;
   margin-left: 10px;
   background-color: white;
