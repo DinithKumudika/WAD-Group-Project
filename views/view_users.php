@@ -1,11 +1,6 @@
 <?php
-session_start();
-include('../db/db_connect.php');
-$query1 = "SELECT * FROM applicant_reg";
-$query2 = "SELECT * FROM emp_reg";
-$rows;
-$result1 = mysqli_query($conn, $query1);
-$result2 = mysqli_query($conn, $query2);
+
+include('../includes/view_users_inc.php');
 
 ?>
 <!DOCTYPE html>
@@ -51,31 +46,31 @@ $result2 = mysqli_query($conn, $query2);
                     </tr>
                </thead>
 
-               <?php while ($row = mysqli_fetch_array($result2)) { ?>
+               <?php foreach ($employer_datas as $data) { ?>
                     <tr>
                          <td class="td-1">
-                              <?= $row['first_name']; ?>
+                              <?= $data['first_name']; ?>
                          </td>
                          <td class="td-1">
-                              <?= $row['last_name']; ?>
+                              <?= $data['last_name']; ?>
                          </td>
                          <td class="td-2">
-                              <?= $row['email']; ?>
+                              <?= $data['email']; ?>
                          </td>
                          <td class="td-3">
-                              <?= $row['phone_no']; ?>
+                              <?= $data['phone_no']; ?>
                          </td>
                          <td class="td-3">
-                              <?= $row['company']; ?>
+                              <?= $data['company']; ?>
                          </td>
                          <td class="td-3">
 
-                              <?= $row['username']; ?>
+                              <?= $data['username']; ?>
                          </td>
                          <td class="td-4">
                               <div class="btn-container">
                                    <button class="button button3">
-                                        <a href="delete_users.php?emp_id=<?php echo $row['emp_id']; ?>">Delete</a>
+                                        <a href="../includes/delete_users_inc.php?emp_id=<?php echo $data['emp_id']; ?>">Delete</a>
                                    </button>
                               </div>
                          </td>
@@ -96,29 +91,29 @@ $result2 = mysqli_query($conn, $query2);
                     </tr>
                </thead>
 
-               <?php while ($row = mysqli_fetch_array($result1)) { ?>
+               <?php foreach ($applicant_datas as $data) { ?>
                     <tr>
                          <td class="td-1">
-                              <?= $row['first_name']; ?>
+                              <?= $data['first_name']; ?>
                          </td>
                          <td class="td-1">
-                              <?= $row['last_name']; ?>
+                              <?= $data['last_name']; ?>
                          </td>
                          <td class="td-2">
-                              <?= $row['email']; ?>
+                              <?= $data['email']; ?>
                          </td>
                          <td class="td-3">
-                              <?= $row['phone_no']; ?>
+                              <?= $data['phone_no']; ?>
                          </td>
                          <td class="td-3">
 
-                              <?= $row['username']; ?>
+                              <?= $data['username']; ?>
                          </td>
                          <td class="td-4">
                               <div class="btn-container">
                                    <button class="button button3">
 
-                                        <a href="delete_users.php?applicant_id=<?php echo $row['applicant_ID']; ?>">Delete</a>
+                                        <a href="../includes/delete_users_inc.php?applicant_id=<?php echo $data['applicant_ID']; ?>">Delete</a>
                                    </button>
                               </div>
                          </td>

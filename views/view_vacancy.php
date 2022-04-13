@@ -1,10 +1,6 @@
 <?php
-session_start();
-include('../db/db_connect.php');
-$query = "SELECT * FROM vacancy";
-$id = array();
-$rows;
-$result = mysqli_query($conn, $query);
+
+include('../includes/view_vacancy_inc.php');
 
 ?>
 <!DOCTYPE html>
@@ -50,31 +46,31 @@ $result = mysqli_query($conn, $query);
                </tr>
           </thead>
 
-          <?php while ($row = mysqli_fetch_array($result)) { ?>
+          <?php foreach ($datas as $data) { ?>
                <tr>
                      <td class="td-1">
-                         <?= $row['job_title']; ?>
+                         <?= $data['job_title']; ?>
                     </td>
                     <td class="td-1">
-                         <?= $row['position']; ?>
+                         <?= $data['position']; ?>
                     </td>
                     <td class="td-2">
-                         <?= $row['company']; ?>
+                         <?= $data['company']; ?>
                     </td>
                     <td class="td-3">
-                         <?= $row['salary']; ?>
+                         <?= $data['salary']; ?>
                     </td>
                     <td class="td-3">
-                         <?= $row['category']; ?>
+                         <?= $data['category']; ?>
                     <td class="td-4">
                          <div class="btn-container">
                               <button class="button button1">
                               <!--  -->
-                                  <a href="edit_vacancy.php?vacancy_id=<?php echo $row['vacancy_id']; ?>">Update</a>
+                                  <a href="edit_vacancy.php?vacancy_id=<?php echo $data['vacancy_id']; ?>">Update</a>
                               </button>
                               <button class="button button3">
                                   
-                                  <a href="delete_vacancy.php?vacancy_id=<?php echo $row['vacancy_id']; ?>">Delete</a>
+                                  <a href="delete_vacancy.php?vacancy_id=<?php echo $data['vacancy_id']; ?>">Delete</a>
                               </button>
                               
                          </div>

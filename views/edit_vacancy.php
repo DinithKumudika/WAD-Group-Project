@@ -1,74 +1,19 @@
 <?php
-session_start();
-include('../db/db_connect.php');
-$query = "SELECT * FROM vacancy";
-$id = array();
-$rows;
-$result = mysqli_query($conn, $query);
-//update data to the database
-if (isset($_POST['update'])) {
 
-    $job_title = $_POST['job_title'];
+include('../config/db.php');
+//get values from the database 
 
-    $vacancy_id = $_POST['vacancy_id'];
-
-    $position = $_POST['position'];
-
-    $company = $_POST['company'];
-
-    $salary = $_POST['salary'];
-
-    $category = $_POST['category'];
-
-    $description = $_POST['description'];
-
-    $emp_id = $_POST['emp_id'];
-
-    $sql = "UPDATE `vacancy` SET `job_title`='$job_title',`position`='$position',`company`='$company',`salary`='$salary',`category`='$category',`description`='$description',`emp_id`='$emp_id'  WHERE `vacancy`.`vacancy_id`='$vacancy_id'";
-
-
-    $result = $conn->query($sql);
-
-
-    if ($result == TRUE) {
-        echo '<script language="javascript">';
-        echo 'alert("Record updated successfully")';
-        echo '</script>';
-    } else {
-
-        echo "Error:" . $sql . "<br>" . $conn->error;
-    }
-}
-//get value from the database 
 if (isset($_GET['vacancy_id'])) {
 
     $vacancy_id = $_GET['vacancy_id'];
 
     $sql = " SELECT * FROM `vacancy` WHERE `vacancy_id`='$vacancy_id'";
 
-    echo "vacancy id" . $vacancy_id;
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
 
-        while ($row = $result->fetch_assoc()) {
-
-            $vacancy_id  = $row['vacancy_id'];
-
-            $job_title = $row['job_title'];
-
-            $position = $row['position'];
-
-            $company  = $row['company'];
-
-            $salary = $row['salary'];
-
-            $category = $row['category'];
-
-            $description = $row['description'];
-
-            $emp_id = $row['emp_id'];
-        }
+        $row = mysqli_fetch_assoc($result);
     }
 }
 
@@ -97,44 +42,38 @@ if (isset($_GET['vacancy_id'])) {
     <?php
     include('admin_header.php');
     ?>
-    <div style="margin-left:250px; margin-top:10px;">
+    <div style="margin-left:250px; margin-top:90px;">
 
-        <form action="" method="post">
-
-            <label for="vacancy_id"></label>
-            <br>
-            <input type="hidden" id="vacancy_id" class="text" name="vacancy_id" value="<?php echo $vacancy_id; ?>">
-            <br>
-            <br>
+        <form action="../includes/edit_vacancy_inc.php" method="post">
             <label for="job_title">Job Title:</label>
             <br>
             <br>
-            <input type="text" id="job_title" class="text" name="job_title" value="<?php echo $job_title; ?>">
+            <input type="text" id="job_title" class="text" name="job_title" value="<?php echo $row['job_title']; ?>">
             <br>
             <br>
             <label for="position">Position:</label>
             <br>
             <br>
-            <input type="text" id="position" class="text" name="position" value="<?php echo $position; ?>">
+            <input type="text" id="position" class="text" name="position" value="<?php echo $row['position']; ?>">
             <br>
             <br>
             <label for="company">Company:</label>
             <br>
             <br>
-            <input type="text" id="company" class="text" name="company" value="<?php echo $company; ?>">
+            <input type="text" id="company" class="text" name="company" value="<?php echo $row['company']; ?>">
             <br>
             <br>
             <label for="salary">Salary:</label>
             <br>
             <br>
-            <input type="text" id="salary" class="text" name="salary" value="<?php echo $salary; ?>">
+            <input type="text" id="salary" class="text" name="salary" value="<?php echo $row['salary']; ?>">
             <br>
             <br>
             <label for="category">Category:</label>
             <br>
             <br>
             <select name="category" id="job-cat">
-                <option value="deafault" disabled='disabled' selected>Choose job category..</option>
+                <option value= <?php $row['category'] ?> disabled='disabled' selected><?php echo $row['category']; ?></option>
                 <option value="Administration,business and management">Administration,business and management</option>
                 <option value="Computing and IT">Computing and IT</option>
                 <option value="Construction and building">Construction and building</option>
@@ -158,7 +97,7 @@ if (isset($_GET['vacancy_id'])) {
             <label for="description">description</label>
             <br>
             <br>
-            <textarea rows="15"><?php echo $description; ?></textarea>
+            <textarea rows="15" name="description"><?php $row['description']; ?></textarea>
             <input type="submit" value="Update" name="update" class="submit-btn">
         </form>
     </div>

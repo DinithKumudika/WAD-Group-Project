@@ -1,4 +1,5 @@
 <div class="sidenav">
+<a href="admin_home.php">Home</a>
   <a href="view_admins.php">View Admins</a>
   <a href="add_admins.php">Add Admins</a>
   <a href="view_vacancy.php">View Vacancies</a>

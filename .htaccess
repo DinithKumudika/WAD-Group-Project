@@ -1,0 +1,22 @@
+#disable directory browsing for users
+Options -Indexes
+
+RewriteEngine on
+
+#redirecting to custom 404 error page
+ErrorDocument 404 /hireme/error.php
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+
+#RewriteRule ^login$ login.php [NC,L]
+#RewriteRule ^signup/employee$ emp_signup.php [NC,L]
+#RewriteRule ^signup/applicant$ regular_signup.php [NC,L]
+#RewriteRule ^contact$ contact.php [NC,L]
+#RewriteRule ^vacancies/apply/(\d+)$ apply.php?vacancy_id=$1 [NC,L]
+#RewriteRule ^vacancies$ vacancy.php [NC,L]
+#RewriteRule ^admin/add$ add_admins.php [NC,L]
+#RewriteRule ^admin/add/user$ add_users.php [NC,L]
+#RewriteRule ^admin/delete$ delete_admins.php [NC,L]
+#RewriteRule ^admin/delete/user$ delete_users.php [NC,L]
+#RewriteRule ^admin/employee$ emp_signup.php [NC,L]

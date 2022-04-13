@@ -7,18 +7,18 @@ $hireEmployees = '';
 
 $reg_section = '<div class="container">
     <div class="container-1" id="con-1">
-      <form action="../Modules/Auth.php" method="post">
+      <form>
         <h1 class="reg-title">Company Registration</h1>
         <p>Searching for best employes for your company? <br> Register today to find best skills for you</P>
-        <a href="./emp_signup.php"><input type="button" class="btn" value="Register"></a>
+        <a href="emp_signup.php"><input type="button" class="btn" value="Register"></a>
       </form>
     </div>
     <div>
-      <form action="../Modules/Auth.php" method="post">
+      <form>
         <div class="container-2" id="con-2">
           <h1 class="reg-title">Candidate Registration</h1>
           <p>Looking for the job that suits you most? <br> Register and start searching!</p>
-          <a href="./regular_signup.php"><input type="button" class="btn" value="Register"></a>
+          <a href="regular_signup.php"><input type="button" class="btn" value="Register"></a>
         </div>
       </form>
     </div>
@@ -34,29 +34,29 @@ $reg_now =
   </div>
 </a>';
 
-if (isset($_SESSION['user_applicant'])) {
+if (isset($_SESSION['applicant'])) {
   $reg_section = "";
   $applyJob = '<div class="container align">
     <div class="full-width" id="con-1">
-      <form action="../Modules/Auth.php" method="post">
+      <form>
         <h1 class="reg-title">Looking for the dream job?</h1>
         <p>Find the best career opportunity tha suits you</P>
-        <a href="./vacancy.php"><input type="button" class="btn" value="Apply Now"></a>
+        <a href="vacancy.php"><input type="button" class="btn" value="Apply Now"></a>
       </form>
     </div>
   </div>';
-} else if (isset($_SESSION['user_emp'])) {
+} else if (isset($_SESSION['employer'])) {
   $reg_section = "";
   $hireEmployees = '<div class="container align">
     <div class="full-width" id="con-1">
-      <form action="../Modules/Auth.php" method="post">
+      <form>
         <h1 class="reg-title">Looking for best qualified employees?</h1>
         <p>Post your Job vacancy now!</P>
-        <a href="./vacancy.php"><input type="button" class="btn" value="Post a job"></a>
+        <a href="hire.php"><input type="button" class="btn" value="Post a job"></a>
       </form>
     </div>
   </div>';
-} else if (isset($_SESSION['user_admin'])) {
+} else if (isset($_SESSION['admin'])) {
   $reg_section = "";
 }
 ?>

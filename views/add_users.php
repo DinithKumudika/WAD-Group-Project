@@ -1,63 +1,4 @@
-<?php
-session_start();
-include('../db/db_connect.php');
 
-//add user data to the database
-if (isset($_POST['submit'])) {
-
-  if ($_POST['user-cat'] == "Apllicant") {
-    $first_name = $_POST['first_name'];
-
-    $last_name = $_POST['last_name'];
-
-    $email = $_POST['email'];
-
-    $phone_no = $_POST['phone_no'];
-
-    $username = $_POST['username'];
-
-    $password = $_POST['password'];
-
-    $sql = "INSERT INTO `applicant_reg`(`first_name`, `last_name`, `email`,  `phone_no`,`password`, `username`) VALUES ('$first_name','$last_name','$email','$phone_no','$username','$password');";
-
-    $result = $conn->query($sql);
-
-  }
-  else if ($_POST['user-cat'] == "Employer") {
-
-    $first_name = $_POST['first_name'];
-
-    $last_name = $_POST['last_name'];
-
-    $email = $_POST['email'];
-
-    $phone_no = $_POST['phone_no'];
-
-    $company = $_POST['company'];
-
-    $username = $_POST['username'];
-
-    $password = $_POST['password'];
-
-    $sql = "INSERT INTO `emp_reg`(`emp_id`,`first_name`, `last_name`, `email`,  `phone_no`, `company`, `password`, `username`) VALUES (NULL,'$first_name','$last_name','$email','$phone_no','$company','$username','$password');";
-
-    $result = $conn->query($sql);
-  }
-
-  if ($result == TRUE) {
-    echo '<script language="javascript">';
-    echo 'alert("New user Added.")';
-    echo '</script>';
-  } else {
-
-    echo "Error:" . $sql . "<br>" . $conn->error;
-  }
-  $conn->close();
-}
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,7 +26,7 @@ if (isset($_POST['submit'])) {
 
   <div style="margin-left:250px; margin-top:70px">
 
-    <form action="" method="post">
+    <form action="../includes/add_users_inc.php" method="post">
       <select name="user-cat" id="" style="width: 20%;">
         <option value="Applicant">Applicant</option>
         <option value="Employer">Employer</option>

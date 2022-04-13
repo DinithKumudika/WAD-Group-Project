@@ -1,5 +1,5 @@
 /*font imports*/
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=McLaren&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Roboto+Condensed:wght@700&family=Roboto:wght@100;400&family=Yanone+Kaffeesatz:wght@300;400;500;600&family=Zen+Kurenaido&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 body{
     background-image: url('../assets/images/bg.jpg');
@@ -9,130 +9,86 @@ body{
     padding: 0px 20px 0px 20px;
 }
 
-.login-text{
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-    margin-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.container{
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    max-width: 500px;
-    position: relative;
-    top: 140px;
-    background-color: rgb(27, 98, 179,0.8);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .wrapper {
+    width: 450px;
+    padding: 2rem 0 1rem 0;
+    margin: 100px auto;
+    background: rgb(251, 251, 251,0.95);
     border-radius: 10px;
-    height: 500px;
-    padding-top: 50px;
-    padding-bottom: 40px;
-}
-
-.sub-container-1{
-    display: flex;
-    flex-direction: row;
-    margin:auto;
-    width: 80%;
-    padding-left: 20px;
-}
-
-.sub-container-1 .input-field{
-    display: flex;
-    flex-direction: column;
-}
-
-.sub-container-1 .icon-container{
-    margin-top: 35px;
-    margin-right: 15px;
-}
-
-.fa-solid{
-    color: white;
-}
-
-.input-box{
-    border: 4px solid transparent;
-    margin: 20px auto 10px auto;
-    width: 300px;
-    height: 30px;
-    border-radius: 5px;
-    padding: 5px 10px;
-}
-
-.input-box:focus{
-    border: 4px solid rgb(51, 125, 195,0.5);
-    outline: none;
-}
-
-.login-btn{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    border: 2px solid white;
-    border-radius: 15px;
-    width: 50%;
-    height: 50px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: transparent;
-    color: white;
-    font-size: 20px;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-}
-
-.login-btn:hover{
-    transform: scale(1.05);
-    background-color: white;
-    color: rgb(27, 98, 179);
-    cursor: pointer;
-}
-
-.sub-container-2{
+    text-align: center;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    height: auto;
+  }
+  h1 {
+    font-size: 2rem;
+    color: #07001f;
+  }
+  p {
+    margin-bottom: 1.7rem;
+  }
+  
+  form {
     margin-top: 20px;
-    margin-left: 12%;
+  }
+  
+  form p{
+        text-align: left;
+        margin-left: 30px;
+  }
+  
+  .form-input {
+    width: 85%;
+    outline: none;
+    border: none;
+    background: #dfe9f5;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  .chk {
+    margin-right: 35px;
     display: flex;
     flex-direction: row;
-}
-
-.sub-container-2 label{
-    font-family: 'Open Sans', sans-serif;
-    font-size:small;
-    margin-left: 10px;
-    color: white;
-}
-
-.ch-2{
-    margin-left: 25%;
-}
-
-.sub-container-3{
-    margin: 20px auto 0px auto;
-}
-
-.sub-container-3 p{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.sub-container-3 p a{
+    justify-content: flex-end;
+    font-size: 0.8rem;
+  }
+  
+  .chk input{
+        margin-right: 10px;
+  }
+  
+  .button {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    padding: 8px 0;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 85%;
+    background: rgba(32, 118, 231, 0.8);
+    color: #fff;
+    cursor: pointer;
+  }
+  .button:hover {
+    background: rgba(17, 89, 172, 0.8);
+  }
+  
+  .not-member {
+    font-size: 0.8rem;
+    margin-top: 1.4rem;
+  }
+  .not-member a {
+    color: rgba(32, 118, 231, 0.8);
     text-decoration: none;
-    color: white;
-}
-
-.red{
-    color: rgb(255, 10, 10);
-    font-size: 20px;
-}
-
-.wrong-cred{
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgb(230, 52, 52);
-    color: white;
-    font-size: 20px;
-}
+  }
+  a:hover {
+    text-decoration: underline;
+  }

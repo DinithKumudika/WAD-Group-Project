@@ -1,49 +1,7 @@
 <?php
-  include('../db/db_connect.php');
-
-  $login_display = '';
-  $loginpage_link = '';
-  $disabled = '';
-  $logout = '';
-  $admin = '';
-  $hiring = '';
-  $vacancy = '';
-  
-  //checking session variables to determine user
-  if(isset($_SESSION['user_applicant']) || isset($_SESSION['user_admin']) || isset($_SESSION['user_emp']) ||isset($_SESSION['default_user'])){
-    if(isset($_SESSION['default_user'])){
-      $hiring = '<li><a href="./hire.php">Hire</a></li>';
-      $login_display = $_SESSION['default_user'];
-      $vacancy = '<li><a href="./vacancy.php">Vacancies</a></li>';
-    }
-    else if(isset($_SESSION['user_applicant'])){
-      $login_display = $_SESSION['user_applicant'];
-      $applicant = '<li><a href="./vacancy.php">Vacancies</a></li>';
-
-    }
-    else if(isset($_SESSION['user_admin'])){
-        $admin = '<li><a href="view_users.php">Admin</a></li>';
-        $hiring = '<li><a href="./hire.php">Hire</a></li>';
-        $login_display = $_SESSION['user_admin'];
-        $vacancy = '<li><a href="./vacancy.php">Vacancies</a></li>';   
-    }
-    else if(isset($_SESSION['user_emp'])){
-      $login_display = $_SESSION['user_applicant'];
-      $emp = '<li><a href="./hire.php">Hire</a></li>';
-    }
-    
-    $disabled = 'disabled-link';
-    $logout = '<input class="logout" type="submit" value="logout" name="logout">';
-  }
-  else{
-    $login_display = 'Login';
-    $loginpage_link = 'login.php';
-  }
-
-  if(isset($_POST['logout'])){
-      session_destroy();
-      header('Location:login.php');
-  }
+  session_start();
+  include('../includes/set_user_inc.php');
+  include('../includes/logout_inc.php')
 ?>
 
 

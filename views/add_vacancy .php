@@ -1,53 +1,4 @@
-<?php
-session_start();
-include('../db/db_connect.php');
-$query = "SELECT * FROM vacancy";
-$id = array();
-$rows;
-$result = mysqli_query($conn, $query);
-//update data to the database
-if (isset($_POST['submit'])) {
 
-     $job_title = $_POST['job_title'];
-
-     $position = $_POST['position'];
-
-     $company = $_POST['company'];
-
-     $salary = $_POST['salary'];
-
-     $category = $_POST['category'];
-
-     $description = $_POST['description'];
-
-     $emp_id = $_POST['emp_id'];
-
-     //  $sql = "UPDATE `vacancy` SET `job_title`='$job_title',`position`='$position',`company`='$company',`salary`='$salary',`category`='$category',`description`='$description',`emp_id`='$emp_id'  WHERE `vacancy`.`vacancy_id`='$vacancy_id'"; 
-
-
-     $sql = "INSERT INTO `vacancy`(`vacancy_id`,`job_title`, `position`, `company`, `salary`, `category`, `description`,`emp_id`) VALUES (NULL,'$job_title','$position','$company','$salary','$category','$description','$emp_id');";
-
-
-     // $sql="INSERT INTO `vacancy` (`vacancy_id`, `job_title`, `position`, `company`, `salary`, `category`, `description`, `emp_id`) VALUES (NULL, 'lacoa;skncolsc', 'asaesdcasefed', 'Seffgfesdcaseg', 'aegsedfsfseg', 'aegdszdgrehrhaeer', 'asegasdgasdgasdvasegasdgawrgasdbsdrbadrb', '2');";
-
-     $result = $conn->query($sql);
-
-     if ($result == TRUE) {
-
-          echo "New record created successfully.";
-          echo '<script language="javascript">';
-          echo 'alert("New record created successfully.")';
-          echo '</script>';
-     } else {
-
-          echo "Error:" . $sql . "<br>" . $conn->error;
-     }
-     $conn->close();
-}
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +26,7 @@ if (isset($_POST['submit'])) {
 
      <div style="margin-left:250px; margin-top:90px">
 
-          <form action="" method="post">
+          <form action="../includes/add_vacancy_inc.php" method="post">
 
                <label for="job_title">Job Title:</label>
                <br>

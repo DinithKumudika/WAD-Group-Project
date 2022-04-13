@@ -1,11 +1,5 @@
 <?php
-session_start();
-include('../db/db_connect.php');
-$query = "SELECT * FROM vacancy";
-$id = array();
-$rows;
-$result = mysqli_query($conn, $query);
-
+     include('../includes/vacancy_inc.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

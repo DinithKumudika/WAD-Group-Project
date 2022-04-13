@@ -1,53 +1,35 @@
 <?php
 session_start();
-include('../db/db_connect.php');
-$fileErr = '';
-$err = '';
-$success = '';
+include('../config/db.php');
 
-$applicant_id = $_SESSION['user_id'];
-$vacancy_id = $_GET['vacancy_id'];
+$empty_input = "";
+$upload_err = "";
+$invalid_file = "";
+$success_msg = "";
 
-if (isset($_GET['vacancy_id'])) {
-     $query1 = "SELECT * FROM vacancy WHERE vacancy_id='{$vacancy_id}'";
-     $result1 = mysqli_query($conn, $query1);
-     $row = mysqli_fetch_assoc($result1);
+if(isset($_SESSION['applicant'])){
+     if (isset($_GET['vacancy_id'])) {
+          $vacancy_id = $_GET['vacancy_id'];
+          $query = "SELECT * FROM `vacancy` WHERE vacancy_id='$vacancy_id'";
+          $result = mysqli_query($conn, $query);
+          $row = mysqli_fetch_assoc($result);
+     }
 }
 
-if (isset($_POST['apply'])) {
-     $full_name = $_POST['full-name'];
-     $address_line1 = $_POST['address-1'];
-     $address_line2 = $_POST['address-2'];
-     $phone_no = $_POST['phone-no'];
-     $NIC = $_POST['nic'];
-     $district = $_POST['district'];
-     $resume = $_FILES['cv'];
-
-     //checking that uploaded file is pdf or not
-     $filename = $_FILES['cv']['name'];
-     $tempFile = $_FILES['cv']['tmp_name'];
-     $fileErr = $_FILES['cv']['error'];
-     $fileArr = explode('.', $filename);
-     $fileExt = strtolower(end($fileArr));
-
-     if (empty($full_name) || empty($address_line1) || empty($address_line2) || empty($phone_no) || empty($NIC) || empty($district) || empty($resume)) {
-          $err = 'All the fields are required';
-     } else {
-          $address = $address_line1 . ',' . $address_line2;
-          if ($fileErr === 0) {
-               if ($fileExt === 'pdf') {
-                    //renaming file with applicant_id and current time
-                    $filenameNew = $_SESSION['user_id'] . "-" . uniqid('', true) . "." . $fileExt;
-                    $fileDest = '../uploads/' . $filenameNew;
-                    move_uploaded_file($tempFile, $fileDest);
-                    $query2 = "INSERT INTO applications(applicant_ID,vacancy_id,full_name,`address`,phone_no,NIC,district,`resume`) VALUES";
-                    $success = 'Application sent successfully!';
-               } else {
-                    $fileErr = "pdf files only";
-               }
-          } else {
-               echo "error uploading file";
-          }
+if(isset($_GET['error'])){
+     $error = $_GET['error'];
+     if($error === "empty"){
+          $empty_input = "All fields are required";
+     }
+     else if($error === "upload"){
+          $upload_err = "Problem with uploading the file";
+     }
+     else if($error === "file_format"){
+          $invalid_file = "Uploaded file is not a pdf";
+     }
+     else if($error === "none"){
+          echo "<script>alert('Success!');</script>";
+          echo "window.location.href = ".ROOT."'views/vacancy.php'";
      }
 }
 
@@ -89,38 +71,81 @@ if (isset($_POST['apply'])) {
           </div>
           <div class="container">
                <h1>Apply for profession</h1>
-               <form action="" method="POST" enctype="multipart/form-data">
+               <form action="../includes/apply_inc.php?vacancy_id=<?php echo $vacancy_id ?>" enctype="multipart/form-data" method="POST">
                     <div class="sub-container">
                          <div>
                               <label for="job-title">Full Name:</label>
                          </div>
                          <div>
-                              <input type="text" placeholder="Full name" name="full-name">
+                         <?php
+                              if(isset($_GET['name'])){
+                                   echo '<input type="text" placeholder="Full name" name="full-name" value = '.$_GET['name'].'>';
+                              }
+                              else {
+                                   echo '<input type="text" placeholder="Full name" name="full-name">';
+                              }
+                         ?>     
                          </div>
                     </div>
                     <div class="sub-container">
                          <label for="position">Address:</label>
                          <div class="address">
                               <div>
-                                   <input type="text" placeholder="Address line 1" name="position" class="address-1" name="address-1">
+                                   <?php
+                                        if(isset($_GET['address-1'])){
+                                             echo '<input type="text" placeholder="Address line 1" class="address-1" name="address-1" value='.$_GET['address-1'].'>';
+                                        }
+                                        else{
+                                             echo '<input type="text" placeholder="Address line 1" class="address-1" name="address-1">';
+                                        }
+                                   ?>
                               </div>
                               <div>
-                                   <input type="text" placeholder="Address line 2" name="position" class="address-2" name="address-2">
+                                   <?php
+                                        if(isset($_GET['address-2'])){
+                                             echo '<input type="text" placeholder="Address line 2" class="address-2" name="address-2" value='.$_GET['address-2'].'>';
+                                        }
+                                        else{
+                                             echo '<input type="text" placeholder="Address line 2" class="address-2" name="address-2">';
+                                        }
+                                   ?>
+                                   
                               </div>
                          </div>
                     </div>
                     <div class="sub-container">
                          <label for="salary">Phone no:</label>
-                         <input type="text" placeholder="Phone no" name="phone-no">
+                         <?php
+                              if(isset($_GET['phone'])){
+                                   echo '<input type="text" placeholder="Phone no" name="phone-no" value='.$_GET['phone'].'>';
+                              }
+                              else{
+                                   echo '<input type="text" placeholder="Phone no" name="phone-no">';
+                              }
+                         ?>
                     </div>
                     <div class="sub-container">
                          <label for="nic">NIC:</label>
-                         <input type="text" placeholder="NIC" name="nic">
+                         <?php
+                              if(isset($_GET['nic'])){
+                                   echo '<input type="text" placeholder="NIC" name="nic" value='.$_GET['nic'].'>';
+                              }
+                              else{
+                                   echo '<input type="text" placeholder="NIC" name="nic">';
+                              }
+                         ?>
                     </div>
                     <div class="sub-container">
                          <label for="district">District:</label>
-                         <select name="districts" id="district" name="district">
-                              <option value="" disabled='disabled' selected>choose you district</option>
+                         <select id="district" name="district">
+                              <?php
+                                   if(isset($_GET['dist'])){
+                                        echo '<option value='.$_GET['dist'].' disabled="disabled" selected>'.$_GET['dist'].'</option>';
+                                   }
+                                   else{
+                                        echo '<option value="" disabled="disabled" selected>choose you district</option>';
+                                   }
+                              ?>
                               <option value="Ampara">Ampara</option>
                               <option value="Anuradhapura">Anuradhapura</option>
                               <option value="Badulla">Badulla</option>
@@ -156,9 +181,9 @@ if (isset($_POST['apply'])) {
                               <button id="cv-btn" type="button">Upload resume</button>
                               <span id="cv-text">No file chosen...</span>
                          </div>
-                         <p class="err"><?= $fileErr; ?></p>
+                         <p class="err"><?= $invalid_file; ?></p>
                     </div>
-                    <p class="err"><?= $err; ?></p>
+                    <p class="err"><?= $empty_input; ?></p>
                     <input type="submit" value="Apply for job" name="apply" class="btn">
                </form>
           </div>

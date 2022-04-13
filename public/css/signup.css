@@ -1,205 +1,128 @@
 /*font imports*/
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=McLaren&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Roboto+Condensed:wght@700&family=Roboto:wght@100;400&family=Yanone+Kaffeesatz:wght@300;400;500;600&family=Zen+Kurenaido&display=swap');
 
-body{
-    background-image: url('../assets/images/bg2.jpg');
-    background-size:100% 150%;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0px 20px 0px 20px;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-image: url('../assets/images/bg2.jpg');
+  background-size:100vw 100vh;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0px 20px 0px 20px;
 }
 
 .signup-opt{
-    margin-top: 20px;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    align-content: center;
-    margin-left: 20%;
+  margin-top: 20px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-content: center;
+  margin-left: 20%;
 }
 
 .signup-opt-btn{
-    background-color: rgb(27, 98, 179);
-    color: white;
-    font-size: 20px;
-    width: auto;
-    height: 40px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border: 1px solid rgb(44, 44, 44);
-    border-bottom: none;
-    padding: 5px 10px;
+  background-color: rgb(27, 98, 179);
+  color: white;
+  font-size: 20px;
+  width: auto;
+  height: 40px;
+  border-radius: 5px;
+  border: 0px solid;
+  border-bottom: none;
+  padding: 5px 10px;
 }
 
 .signup-opt-btn:nth-of-type(1){
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .signup-opt-btn:nth-of-type(2){
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .active{
-    border: 0px solid;
-    background-color: rgb(27, 98, 179,0.8);
+  background-color: rgb(27, 98, 179,0.8);
 }
 
-.heading{
-    color: rgb(255, 255, 255);
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-family:cursive;
-    font-weight: bold;
-    font-size: 35px;
+.wrapper {
+  width: 500px;
+  padding: 20px 10px 10px 10px;
+  margin: 30px auto 10px auto;
+  background: #fff;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  height: auto;
+}
+h1 {
+  font-size: 2rem;
+  color: #07001f;
+}
+p {
+  margin-bottom: 1.7rem;
 }
 
-.login-text{
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-    margin-top: 5px;
-    margin-left: auto;
-    margin-right: auto;
+form {
+  margin-top: 20px;
 }
 
-.signup-container{
-    padding-top: 0px;
-    position: relative;
-    display: flex;
-    max-width: 850px;
-    flex-direction: row;
-    margin: auto;
-    height: 650px;
-    z-index: 0;
+form p{
+      text-align: left;
+      margin-left: 30px;
 }
 
-.form-container{
-    display: flex;
-    flex-direction: column;
-    width:500px;
-    background-color: rgb(27, 98, 179,0.8);
-    border-radius: 10px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    height: 650px;
-    padding: 20px 10px 50px 10px;
+.form-input {
+  width: 85%;
+  outline: none;
+  border: none;
+  background: #dfe9f5;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
-.signup-img img{
-    height: 720px;
-    max-width: 360px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    image-rendering:optimizeQuality;
+.chk {
+  margin-right: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 0.8rem;
 }
 
-.input-box{
-    border: 4px solid transparent;
-    margin: 5px auto 5px auto;
-    width: 70%;
-    height: 25px;
-    border-radius: 5px;
-    padding: 5px 5px;
+.chk input{
+      margin-right: 10px;
 }
 
-label{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    color: white;
-    margin-left: 13%;
-    margin-bottom: 5px;
+.button {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  padding: 8px 0;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  width: 85%;
+  background: rgba(32, 118, 231, 0.8);
+  color: #fff;
+  cursor: pointer;
+}
+.button:hover {
+  background: rgba(17, 89, 172, 0.8);
 }
 
-.sub-container-1{
-    margin: 15px auto 10px 16%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.not-member {
+  font-size: 0.8rem;
+  margin-top: 1.4rem;
+}
+.not-member a {
+  color: rgba(32, 118, 231, 0.8);
+  text-decoration: none;
 }
 
-.sub-container-1 .gender-chkbox{
-    margin-left: 10px;
-    margin-top: 5px;
-}
-
-
-.input-box:focus{
-    border: 4px solid rgb(51, 125, 195,0.5);
-    outline: none;
-}
-
-.login-btn{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    border: 2px solid white;
-    border-radius: 15px;
-    width: 53%;
-    height: 50px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px 0px 5px 0px;
-    background-color: transparent;
-    color: white;
-    font-size: 20px;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-}
-
-.login-btn:hover{
-    transform: scale(1.05);
-    background-color: white;
-    color: rgb(27, 98, 179);
-    cursor: pointer;
-}
-
-.sub-container-3{
-    margin: 10px auto 0px auto;
-}
-
-.sub-container-3 p{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.sub-container-3 p a{
-    text-decoration: none;
-    color: white;
-}
-
-.red{
-    color: rgb(216, 29, 29);
-}
-
-.email-notify{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 90px;
-    color: white;
-    width: 350px;
-    height: auto;
-    font-size: 25px;
-    text-align: center;
-    padding: 0px 5px 0px 5px;
-    border-radius: 10px;
-}
-
-.email-green{
-    background-color: rgb(20, 141, 60);
-}
-
-.email-red{
-    background-color: rgb(180, 27, 27);
-}
-
-@media screen and (max-width: 860px) {
-    .signup-img {
-        display: none;
-    }
-
-    .form-container{
-        border-radius: 10px;
-    }
+a:hover {
+  text-decoration: underline;
 }

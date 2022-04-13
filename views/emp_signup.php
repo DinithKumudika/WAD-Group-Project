@@ -1,6 +1,5 @@
 <?php
 include('../db/db_connect.php');
-include('../models/verification.php');
 
 $errors = [
   'fname' => '',
@@ -11,11 +10,6 @@ $errors = [
   'username' => '',
   'dup_username' => '',
   'password' => '',
-];
-
-$mail_notification = [
-  'successfull' => '',
-  'failed' => ''
 ];
 
 if (isset($_POST['signup'])) {
@@ -80,71 +74,36 @@ if (isset($_POST['signup'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Sign up | Hireme</title>
   <link rel="stylesheet" href="../public/css/signup.css">
-  <title>employer signup</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 
 <body>
-  <div class="signup-opt">
-    <a href="regular_signup.php"><button class="signup-opt-btn">For Applicants</button></a>
-    <a href="emp_signup.php"><button class="signup-opt-btn active">For Employers</button></a>
-  </div>
-  <form action="emp_signup.php" method="post">
-    <div class="signup-container">
-      <div class="signup-img">
-        <img src="../public/assets/images/signup.png" alt="signup">
-      </div>
-      <div class="form-container">
-        <h1 class="login-text">SignUp</h1>
-        <label for="f-name">First Name:</label>
-        <input type="text" name="f-name" id="f-name" class="input-box">
-        <div class="red"><?= $errors['fname']; ?></div>
-
-        <label for="l-name">Last Name:</label>
-        <input type="text" name="l-name" id="l-name" class="input-box">
-        <div class="red"><?= $errors['lname']; ?></div>
-
-        <label for="l-name">E-mail:</label>
-        <input type="email" name="e-mail" id="e-mail" class="input-box">
-        <div class="red"><?= $errors['email']; ?></div>
-
-        <label for="phone">Phone no:</label>
-        <input type="text" name="phone" id="phone" class="input-box">
-        <div class="red"><?= $errors['phone']; ?></div>
-
-        <label for="phone">Company name:</label>
-        <input type="text" name="company" id="company" class="input-box">
-        <div class="red"><?= $errors['company']; ?></div>
-
-        <label for="phone">Username:</label>
-        <input type="text" name="username" id="username" class="input-box">
-        <div class="red"><?= $errors['username']; ?></div>
-        <div class="red"><?= $errors['dup_username']; ?></div>
-
-        <label for="create-pwd">Password:</label>
-        <input type="password" name="password" id="password" class="input-box">
-        <div class="red"><?= $errors['password']; ?></div>
-
-        <input type="submit" value="Sign Up" class="login-btn" name="signup">
-        <div class="sub-container-3">
-          <p>Already a member? <a href="login.php">Log In</a></p>
-        </div>
-      </div>
+  <div class="wrapper">
+    <h1>Sign up</h1>
+    <div class="signup-opt">
+      <a href="regular_signup.php"><button class="signup-opt-btn active" value="applicant">For Applicants</button></a>
+      <a href="emp_signup.php"><button class="signup-opt-btn" value="employer">For Employers</button></a>
     </div>
-  </form>
-  <div>
-    <p class="email-green email-notify"><?= $mail_notification['successfull']; ?></p>
-    <p class="email-red email-notify"><?= $mail_notification['failed']; ?></p>
+    <form action="../includes/login_inc.php" method="post">
+      <input type="text" placeholder="First name" class="form-input" name="f-name" id="f-name">
+      <input type="text" placeholder="Last name" class="form-input" name="l-name" id="l-name">
+      <input type="email" placeholder="E-mail" class="form-input" name="e-mail" id="e-mail">
+      <input type="tel" placeholder="Phone no" class="form-input" name="phone" id="phone">
+      <input type="text" placeholder="Company" class="form-input" name="company" id="company">
+      <input type="text" placeholder="Username" class="form-input" name="username" id="username">
+      <input type="password" placeholder="Password" class="form-input" name="password" id="password">
+      <p style="color: red;">All the fields are required!</p> 
+      <input type="submit" value="Sign up" class="button" name="signup">
+    </form>
+    <div class="not-member">
+      Already a member? <a href="login.php">Log in</a>
+    </div>
   </div>
-  <script>
-
-  </script>
 </body>
-
 </html>

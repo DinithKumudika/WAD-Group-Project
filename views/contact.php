@@ -1,36 +1,6 @@
 <?php
-     $error='';
-     $mail_status = '';
-     $to = "hiremelkofficial@gmail.com";
-     if (isset($_POST['sendmessage'])) {
-          $fullName = htmlspecialchars($_POST['full-name']);
-          $email = htmlspecialchars($_POST['email']);
-          $mailubject = htmlspecialchars($_POST['subject']);
-          $message = htmlspecialchars($_POST['message']);
-
-          if (empty($fullName) || empty($email) || empty($subject) || empty($message)) {
-               $error = "*all fields are required";
-          }
-          else{
-               $from = $email;
-               $body = "<b>From:</b>{$fullName}<br>
-                    <b>Subject:</b>{$subject}<br>
-                    <b>Message:</b><br>
-                    {$message}";
-                    
-               $header = "From: {$from}\r\n" .
-                         "Content-Type: text/html\r\n";
-               $sendMail = mail($to,$subject,$body,$header);
-               if($sendMail){
-                    $mail_status = '<p class="green">message sent</p>';
-               }
-               else{
-                    $mail_status = '<p class="red">cannot send message</p>';
-               }
-          }
-     }
+     include('../includes/contact_inc.php');
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,35 +23,34 @@
           <h2 class="title">Get in touch with us</h2>
      </div>
      <div class="container">
-          <form action="contact.php" method="post">
+          <form action="../includes/contact_inc.php" method="post">
                <div>
                     <label for="full-name">Full Name</label>
                     <br>
                     <input type="text" name="full-name" class="input-box name">
-                    <div><?php echo $error;?></div>
                </div>
                <div>
                     <label for="email">E-mail</label>
                     <br>
                     <input type="email" name="email" id="email" class="input-box">
-                    <div><?php echo $error;?></div>
                </div>
                <div>
                     <label for="subject">Subject</label>
                     <br>
                     <input type="text" name="subject" id="" class="input-box">
-                    <div><?php echo $error;?></div>
                </div>
                <div>
                     <label for="message">Message</label>
                     <br>
                     <textarea name="message" id="" cols="50" rows="10" class="message"></textarea>
-                    <div><?php echo $error;?></div>
                </div>
+               <p style="color: red;"><?php echo $error;?></p>
                <div>
                     <input type="submit" value="Send Message" name="sendmessage" class="btn">
                </div>
+
                <div><?php echo $mail_status; ?></div>
+
           </form>
           <div class="contact-container">
                <div class="contact-media">
